@@ -10,8 +10,142 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
+
+    <link rel="stylesheet" href="~/css/login.css">
+
+
+
+
 </head>
+
 <body>
-    <h2>Login Page</h2>
+
+
+    <div class="loaderOverlay" style="display:none"></div>
+    <div class="col-md-12 col-sm-12 col-xs-12 loaderposition" style="display:none">
+        <img src="../../assets/images/loader.gif" />
+    </div>
+
+    <div id="navbar" class="navbar navbar-default" style="display: block">
+        <div class="quickLeftDiv">
+            <div class="navbar-container navCon">
+
+                <div class="navbar-header pull-left">
+                    <a href="#" class="navbar-brand">
+
+                        <img src="~/images/quickcheck.png" class="mainLogo">
+
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="quickrightDiv">
+            <div class="kotakLogo" style="display:block">
+                <img src="~/images/kotak-bank-logo.png" />
+            </div>
+
+
+        </div>
+    </div>
+
+    <form autocomplete="off" class="form">
+        <div class="quickCheckLogin">
+
+            <div class="clearfix">
+            </div>
+            <div class="login-container">
+
+                <h1>
+                    Login
+                </h1>
+                <div class="inset">
+                    <p>
+
+                        <label for="clientId">
+                            Client ID
+                        </label>
+                        <input type="text" class="form-control inputbox"  placeholder="" />
+                        <!-- <span class="error">Enter valid client ID</span> -->
+                    </p>
+                    <p>
+
+                        <label for="email">
+                            Username
+                        </label>
+                        <input name="UserName" type="text" class="form-control inputbox" formControlName="UserName"
+                               placeholder="" />
+                        <!-- <span class="error">Enter valid username</span> -->
+                    </p>
+
+                    <p>
+
+                        <label for="password">
+                            Password
+                        </label>
+                        <input name="Password" type="password" class="form-control inputbox" formControlName="Password"
+                               placeholder="" />
+                        <!-- <span class="error">Enter valid password</span> -->
+                    </p>
+                    <p>
+
+                        <label for="captcha">
+                            Enter the text as shown in the image
+                        </label>
+                        <input name="captcha" type="text" class="form-control inputbox" placeholder="" />
+                        <!-- <span class="error">Wrong Captcha</span> -->
+                    </p>
+                    <div class="captchaCon">
+                        <span class="captchaImg"><label draggable="false"></label></span>
+                        <i class="fa fa-refresh"></i>
+                        <span class="forgotPass">Forgot password ?</span>
+                    </div>
+                    <label id="lblName"></label>
+                    <input type="submit" value="Login" class="loginbtn" />
+
+                    <input type="submit" value="Reset" class="loginbtn" />
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </form>
+
+    <div class="heroImg">
+        <img src="~/images/heroImg.png">
+
+    </div>
+    <div class="clearfix"></div>
+    <div class="instructionBox">
+        <ul>
+            <li>Mandatory fields are marked with an asterisk (*)</li>
+            <li> Do not provide your username and password anywhere other than in this page</li>
+            <li>Your username and password are highly confidential.Never part with them.</li>
+        </ul>
+        <span class="veriSign"><img src="~/images/sectigo_logo.png" /></span>
+    </div>
+    <div class="linkContainer">
+        <ul>
+            <li>About</li>
+            <li>Contact Us</li>
+            <li>Privacy</li>
+            <li>Security</li>
+            <li>Security Tips</li>
+        </ul>
+
+    </div>
+    <div class="footer" style="display: block">
+        <div class="footer-inner">
+            <span class="copyRight">Copyright &copy; 2016-2020 | QuickCheck | All Rights Reserved</span>
+
+        </div>
+    </div>
+
 </body>
 </html>
