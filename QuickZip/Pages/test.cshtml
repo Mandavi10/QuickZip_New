@@ -1,0 +1,39 @@
+﻿@page
+@model QuickZip.Pages.testModel
+@{
+    ViewData["Title"] = "test";
+}
+<script>
+    var columnDefs = [
+        { headerName: "Make", field: "make", sortable: true },
+        { headerName: "Model", field: "model", sortable: true },
+        { headerName: "Price", field: "price", sortable: true }
+    ];
+
+    // specify the data
+    var rowData = [
+        { make: "Toyota", model: "Celica", price: 35000 },
+        { make: "Ford", model: "Mondeo", price: 32000 },
+        { make: "Porsche", model: "Boxter", price: 72000 }
+    ];
+
+    // let the grid know which columns and what data to use
+    var gridOptions = {
+        columnDefs: columnDefs,
+        rowData: rowData,
+        pagination:true
+    };
+
+    // setup the grid after the page has finished loading
+    document.addEventListener('DOMContentLoaded', function () {
+        var gridDiv = document.querySelector('#myGrid');
+        new agGrid.Grid(gridDiv, gridOptions);
+    });
+</script>
+<div class="main-content maincontainer">
+    <div class="content">
+
+        <div id="myGrid" style="height: 580px; width:100%;" class="ag-theme-alpine"></div>
+
+        </div>
+</div>
