@@ -1,3 +1,84 @@
+.modal.right .card-footer {
+    border-top: 0px !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+}
+
+.modal.right .card {
+    border: 0px !important;
+}
+.formCon {
+    position: absolute;
+    top: 0;
+    right: -490px;
+}
+.closeDiv {
+    color: #1b4d80;
+    position: absolute;
+    right: 10px;
+    font-size: 37px !important;
+    top: -12px;
+    font-weight: 600;
+    border: 0px;
+    background: transparent;
+    z-index: 999;
+}
+    .modal-header {
+    padding: 1rem 1rem 0.3rem 1rem !important;
+    border-color: #f1f4f7 !important;
+}
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 500px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog {
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+    transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog {
+    left: 0;
+}
+
+/*Right*/
+.modal.right.fade .modal-dialog {
+    right: 0px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+    transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.show .modal-dialog {
+    right: 0;
+}
+
 .uploadFile {
     position: absolute;
     top: 0;
@@ -26121,7 +26202,8 @@ a:focus, a:hover {
 }
 
 .toolbar-content label {
-    cursor: pointer
+    cursor: pointer;
+        display:inline-block;
 }
 /*#preloader_1 label {
     clear: both;
@@ -26712,7 +26794,11 @@ a:focus, a:hover {
 }
 
     .toolbar-content li label {
-        margin-bottom: 0px !important
+        margin-bottom: 0px !important;
+        font-size: 13px;
+        font-weight: 600;
+        /* padding-top: 0px; */
+        vertical-align: top;
     }
 
 .otpDiv {
