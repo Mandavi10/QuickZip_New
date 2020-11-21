@@ -83,13 +83,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <button type="button" class="closeDiv" data-dismiss="modal" (click)="hide()">&times;</button>
+            <button type="button" class="closeDiv" data-dismiss="modal">&times;</button>
 
 
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="col-md-12 col-sm-6 col-xs-4 contnt-wrapper">
-                    <div class="col-sm-6 col-md-6 col-xs-3 no-padding" [style.display]="showModalCreate ? 'block' : 'none'">
+                    <div class="col-sm-6 col-md-6 col-xs-3 no-padding">
                         <h4 class="pageTitle">
                             Create User
                         </h4>
@@ -103,48 +103,48 @@
                 </div>
 
                 <div class="col-md-12 col-sm-12 col-xs-12 divForm" id="divForm" >
-                    <form [formGroup]="UserForm" appNorightclick>
+                    <form>
 
 
                         <div class="row no-padding mt-2">
-                            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             User Name:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
                                             <input type="text" name="UserName" maxlength="30" id="UserName" class="col-sm-12 col-md-12 col-xs-12" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label p-0" for="form-field-1">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Phone Number:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
                                             <input type="text" name="phoneno" class="col-sm-12 col-md-12 col-xs-12" minlength="10" maxlength="10" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label p-0" for="form-field-1">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Email ID:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
                                             <input type="text" id="EmailId" name="EmailId" class="col-sm-12 col-md-12 col-xs-12" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label p-0" for="form-field-1">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Utility Code:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock multiDrop">
-                                           <select class="withbankdrp">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                           <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
                                                     <option selected="" value="">Select</option>
                                                     <option>option 1</option>
                                                     </select>
@@ -154,65 +154,29 @@
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label p-0" for="form-field-1">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Sponsor Bank Code:
                                         </label>
-                                        <!-- <select class="withbankdrp">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
                                                 <option selected="" value="">Select</option>
                                                 <option>option 1</option>
-                                                </select> -->
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock multiDrop">
+                                            </select>
 
-                                            <div class="chipsContainer" id="UserSponsorBankcode" (click)="clickme($event)">
-                                                <span class="dropDownIcon" [ngClass]="{'active': isDropDownVisible}"><i class="fa fa-angle-down" aria-hidden="true" style="color:#858585; font-weight:bold"></i></span>
-                                                <ul>
-                                                    <li *ngFor="let SponsorBankCode  of MultiDropArray" value="{{SponsorBankCode.Name}}">{{SponsorBankCode.name}}<span class="deleteCity" (click)="removeBank(SponsorBankCode.name)">X</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="citiList" *ngIf="show1" (click)="$event.stopPropagation()">
-                                                <div class="filterdropdown">
-                                                    <input placeholder="Search" (input)="filterSonsorCode()" formControlName="filtersponsorcodedata">
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let SponsorBankCode  of filteredCitiesArray1" [ngClass]="{'selected':SponsorBankCode.selected}">
-                                                        <label>
-                                                            <input type="checkbox" value="{{SponsorBankCode.name}}" [checked]="SponsorBankCode.selected" (change)="onChangeSponsorbankcode($event,SponsorBankCode); SponsorBankCode.selected = !(SponsorBankCode.selected)" />{{SponsorBankCode.name}}
-                                                        </label>
-                                                    </li>
-                                                </ul>
-                                            </div>
                                         </div>
-
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Category Code:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock multiDrop" [ngClass]="{'active': isDropDownVisible2}">
-                                            <!-- <select class="withbankdrp">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                             <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
                                                      <option selected="" value="">Select</option>
                                                      <option>option 1</option>
-                                                     </select>-->
-                                            <div class="chipsContainer" id="UserCategoryCode" (click)="clickto($event)">
-                                                <span class="dropDownIcon" [ngClass]="{'active': isDropDownVisible2}"><i class="fa fa-angle-down" aria-hidden="true" style="color:#858585; font-weight:bold"></i></span>
-                                                <ul>
-                                                    <li *ngFor="let CategoryCode  of MultiDropcategoryArray" value="{{CategoryCode.categoryId}}">{{CategoryCode.name}}<span class="deleteCity" (click)="removecatcode(CategoryCode.categoryId)">X</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="citiList" *ngIf="show2" (click)="$event.stopPropagation()">
-                                                <div class="filterdropdown">
-                                                    <input placeholder="Search" (input)="filterCategoryCode()" formControlName="filtercatcodedata">
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let CategoryCode  of filteredCitiesArray2" [ngClass]="{'selected':CategoryCode.selected}">
-                                                        <label>
-                                                            <input type="checkbox" value="{{CategoryCode.categoryId}}" [checked]="CategoryCode.selected" (change)="onChangeCategorycode($event,CategoryCode); CategoryCode.selected = !(CategoryCode.selected)" />{{CategoryCode.name}}
-                                                        </label>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                                     </select>
+                                       
                                         </div>
                                     </div>
                                 </div>
@@ -221,29 +185,12 @@
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Client Code:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock multiDrop">
-                                            <!-- <select class="withbankdrp">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                             <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
                                                      <option selected="" value="">Select</option>
                                                      <option>option 1</option>
-                                                     </select> -->
-                                            <div class="chipsContainer" id="UserClientCode" (click)="clicktik($event)">
-                                                <span class="dropDownIcon" [ngClass]="{'active': isDropDownVisible3}"><i class="fa fa-angle-down" aria-hidden="true" style="color:#858585; font-weight:bold"></i></span>
-                                                <ul>
-                                                    <li *ngFor="let ClientCode2  of MultiDropclientcodeArray" value="{{ClientCode2.ClientCode}}">{{ClientCode2.Clientcode}}<span class="deleteCity" (click)="removeClientCode(ClientCode2.Clientcode)">X</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="citiList" *ngIf="show3" (click)="$event.stopPropagation()">
-                                                <div class="filterdropdown">
-                                                    <input placeholder="Search" (input)="filterclientcodeCode()" formControlName="filterclientcodedata">
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let ClientCode1  of filteredCitiesArray3" [ngClass]="{'selected':ClientCode1.selected}">
-                                                        <label>
-                                                            <input type="checkbox" value="{{ClientCode1.Clientcode}}" [checked]="ClientCode1.selected" (change)="onChangeClientcode($event,ClientCode1); ClientCode1.selected = !(ClientCode1.selected)" />{{ClientCode1.Clientcode}}
-                                                        </label>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                                     </select>
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -252,110 +199,74 @@
                                         <label class="col-sm-5 col-md-5 col-xs-5 control-label no-padding" for="form-field-1">
                                             Region:
                                         </label>
-                                        <div class="col-sm-7 col-md-7 col-xs-7 p-0 displayinlineblock">
-                                            <select class="withbankdrp" formControlName="region" name="region" [ngClass]="displayFieldCss('region')">
+                                        <div class="col-sm-7 col-md-7 col-xs-7 no-padding displayinlineblock">
+                                            <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
                                                 <option value="">Select</option>
-                                                <option *ngFor="let data of table6" value="{{data.RegionId}}"> {{data.name}} </option>
+                                                <option> Region 1 </option>
+                                                <option> Region 2 </option>
+                                                <option> Region 3 </option>
+                                                <option> Region 4 </option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-5 col-md-5 col-xs-7 control-label no-padding" for="form-field-1">
                                             Product:
                                         </label>
-                                        <div class="col-sm-7 col-md-7 col-xs-7 p-0 displayinlineblock">
-                                                <select class="withbankdrp" formControlName="product" name="product" [ngClass]="displayFieldCss('product')">
-                                                        <option value="">Select</option>
-                                                        <option *ngFor="let data of table5" value="{{data.ProductId}}"> {{data.name}} </option>
+                                        <div class="col-sm-7 col-md-7 col-xs-7 no-padding displayinlineblock">
+                                            <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
+                                                <option value="">Select</option>
+                                                <option>Product 1</option>
+                                                <option>Product 2</option>
+                                                <option>Product 3</option>
 
-                                                        </select>
+                                            </select>
                                         </div>
                                     </div>
-                                </div> -->
-
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
-                                            Product:
-                                        </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock multiDrop" [ngClass]="{'active': isDropDownVisible5}">
-
-                                            <div class="chipsContainer" id="UserProductCode" (click)="clickProduct($event)">
-                                                <span class="dropDownIcon" [ngClass]="{'active': isDropDownVisible5}"><i class="fa fa-angle-down" aria-hidden="true" style="color:#858585; font-weight:bold"></i></span>
-                                                <ul>
-                                                    <li *ngFor="let ProductCode  of MultiDropProductcodeArray" value="{{ProductCode.name}}">{{ProductCode.name}}<span class="deleteCity" (click)="removeProductCode(ProductCode.name)">X</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="citiList" *ngIf="show4" (click)="$event.stopPropagation()">
-                                                <div class="filterdropdown">
-                                                    <input placeholder="Search" (input)="filterProductcodeCode()" formControlName="filterProductcodedata">
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let PCode  of filteredCitiesArray5" [ngClass]="{'selected':PCode.selected}">
-                                                        <label>
-                                                            <input type="checkbox" value="{{PCode.name}}" [checked]="PCode.selected" (change)="onChangePcode($event,PCode); PCode.selected = !(PCode.selected)" />{{PCode.name}}
-                                                        </label>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> 
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Primary Branch:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <select class="withbankdrp" formControlName="branch" name="branch" #BranchId [ngClass]="displayFieldCss('branch')" (change)="BindSecBranch(BranchId.value)">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
                                                 <option value="">Select</option>
-                                                <option *ngFor="let data of table7" value="{{data.BranchId}}"> {{data.name}} </option>
+                                                <option>Branch 1</option>
+                                                <option>Branch 2</option>
+                                                <option>Branch 3</option>
+                                                <option>Branch 4</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label p-0" for="form-field-1">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Secondary Branches:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock multiDrop">
-                                            <!--<select class="withbankdrp">
-                                                    <option selected="" value="">Select</option>
-                                                    <option>option 1</option>
-                                                    </select>-->
-                                            <div class="chipsContainer" id="UserSecondaryBranch" (click)="showDropDown4($event)" (click)="clickmm($event)">
-                                                <span class="dropDownIcon" [ngClass]="{'active': isDropDownVisible4}"><i class="fa fa-angle-down" aria-hidden="true" style="color:#858585; font-weight:bold"></i></span>
-                                                <ul>
-                                                    <li *ngFor="let secbranch  of MultiDropsecbranchArray" value="{{secbranch.BranchId}}">{{secbranch.name}}<span class="deleteCity" (click)="removeSecBranch(secbranch.BranchId);secbranch.selected = !(secbranch.selected)">X</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="citiList" *ngIf="show99" (click)="$event.stopPropagation()">
-                                                <div class="filterdropdown">
-                                                    <input placeholder="Search" (input)="filterSecondaoryCode()" formControlName="filterseccodedata">
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let secbranch  of filteredCitiesArray4" [ngClass]="{'selected':secbranch.selected}">
-                                                        <label>
-                                                            <input type="checkbox" value="{{secbranch.BranchId}}" [checked]="secbranch.selected" (change)="onChangeSecbranch($event,secbranch); secbranch.selected = !(secbranch.selected)" />{{secbranch.name}}
-                                                        </label>
-
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock multiDrop">
+                                            <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
+                                                <option selected="" value="">Select</option>
+                                                <option>Branch 1</option>
+                                                <option>Branch 2</option>
+                                                <option>Branch 3</option>
+                                                <option>Branch 4</option>
+                                            </select>
+                                         
+                                     
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label class="col-sm-12 col-md-5 col-xs-6 control-label p-0" for="form-field-1">
+                                        <label class="col-sm-12 col-md-5 col-xs-6 control-label no-padding" for="form-field-1">
                                             No. for edit for one Mandate:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <input type="text" name="editcount" maxlength="3" formControlName="editcount" [ngClass]="displayFieldCss('editcount')"
-                                                   class="col-sm-12 col-md-12 col-xs-12" (keypress)="isNumber($event)" />
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <input type="text" name="editcount" maxlength="3" class="col-sm-12 col-md-12 col-xs-12" />
                                         </div>
                                     </div>
                                 </div>
@@ -363,14 +274,14 @@
                             </div>
                         </div>
                         <div class="row no-padding">
-                            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Physical:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <select formControlName="Isphysical" (change)="onChangedata()" [ngClass]="displayFieldCss('Isphysical')" class="col-sm-12 col-md-12 col-xs-12">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="col-sm-12 col-md-12 col-xs-12">
                                                 <option selected="" value="">Select</option>
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
@@ -378,14 +289,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                                <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                                 E Mandate:
                                             </label>
-                                            <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                                <select formControlName="IsEmandate" (change)="onChangedata()" [ngClass]="displayFieldCss('IsEmandate')" class="col-sm-12 col-md-12 col-xs-12">
+                                            <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                                <select class="col-sm-12 col-md-12 col-xs-12">
                                                     <option selected="" value="">Select</option>
                                                     <option value="1">Yes</option>
                                                     <option value="0">No</option>
@@ -426,14 +337,14 @@
                         </div>
 
                         <div class="row no-padding">
-                            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Debit Presentation:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <select formControlName="IsDebitpresentation" (change)="onChangedata()" [ngClass]="displayFieldCss('IsDebitpresentation')" class="col-sm-12 col-md-12 col-xs-12">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="col-sm-12 col-md-12 col-xs-12">
                                                 <option selected="" value="">Select</option>
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
@@ -458,14 +369,14 @@
                             </div>
                         </div>
                         <div class="row no-padding">
-                            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Account Validation:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <select formControlName="Isaccountvalidation" (change)="onChangedata()" [ngClass]="displayFieldCss('Isaccountvalidation')" class="col-sm-12 col-md-12 col-xs-12">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="col-sm-12 col-md-12 col-xs-12">
                                                 <option selected="" value="">Select</option>
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
@@ -473,31 +384,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-12 col-sm-4 col-xs-12">
-                                        <div class="form-group">
-                                            <label class="col-sm-6 col-md-5 col-xs-4 control-label no-padding" for="form-field-1">
-                                                    Mobile User
-                                            </label>
-                                            <div class="col-sm-6 col-md-7 col-xs-7 no-padding-left displayinlineblock">
-                                                <input type="text"  class="col-sm-12 col-md-12 col-xs-12" />
-                                            </div>
-                                        </div>
-                                    </div> -->
-
-
-
-
+                             
                             </div>
                         </div>
                         <div class="row no-padding">
-                            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Aadhar Based Mandate:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <select formControlName="Isaddharvaification" (change)="onChangedata()" [ngClass]="displayFieldCss('Isaddharvaification')" class="col-sm-12 col-md-12 col-xs-12">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="col-sm-12 col-md-12 col-xs-12">
                                                 <option selected="" value="">Select</option>
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
@@ -513,14 +411,14 @@
                             </div>
                         </div>
                         <div class="row no-padding">
-                            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Direct Debit Mandate:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <select formControlName="IsDirectDebit" (change)="onChangedata()" [ngClass]="displayFieldCss('IsDirectDebit')" class="col-sm-12 col-md-12 col-xs-12">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="col-sm-12 col-md-12 col-xs-12">
                                                 <option selected="" value="">Select</option>
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
@@ -544,8 +442,8 @@
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Active:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <input type="checkbox" name="chkactive" formControlName="chkactive" [ngClass]="displayFieldCss('chkactive')" />
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <input type="checkbox" name="chkactive" />
                                         </div>
                                     </div>
                                 </div>
@@ -554,14 +452,14 @@
                             </div>
                         </div>
                         <div class="row no-padding">
-                            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
                                             Can Cancelled:
                                         </label>
-                                        <div class="col-sm-12 col-md-7 col-xs-12 p-0 displayinlineblock">
-                                            <select formControlName="Iscancelled" [ngClass]="displayFieldCss('Iscancelled')" class="col-sm-12 col-md-12 col-xs-12">
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="col-sm-12 col-md-12 col-xs-12">
                                                 <option selected="" value="">Select</option>
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
