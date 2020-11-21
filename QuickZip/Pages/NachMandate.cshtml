@@ -1,0 +1,2090 @@
+﻿@page
+@model QuickZip.Pages.NachMandateModel
+@{
+    ViewData["Title"] = "Nach Mandate";
+}
+<style>
+    input[type=checkbox] {
+        vertical-align: middle;
+    }
+    input[type=radio] {
+        position: absolute;
+        margin-left: -15px;
+        margin-top: 5px !important;
+    }
+    .card-header {
+        padding: 0px;
+    }
+
+.modal-body {
+    position: relative;
+    padding: 0px !important;
+}
+
+.lblfont {
+    font-weight: 400 !important;
+}
+
+.withbanksearch{position: absolute;
+    z-index: 9999;
+    right: 0px;
+    top: 4px;}
+
+
+.ifscsearch{position: absolute;
+    right: 12px;
+    top: 4px;}
+
+
+.micrsearch{    position: absolute;
+    right: 12px;
+    top: 4px;}
+
+
+.textboxposition{position: relative;}
+
+
+input[name="bankList"] {
+    border: 1px solid #cdcdcd;
+    border-radius: 2px 2px 2px 2px;
+    font-size: 12px;
+    padding: 5px;
+    height: 23px;
+    width: 57px !important;
+    min-width:570px !important
+  }
+
+  input[list]
+  {
+      max-width: 570px;
+
+  }
+  datalist option{width: 570px; min-width:570px !important; max-width:570px !important}
+
+
+
+.viewimage{border: 1px solid #cdcdcd;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;}
+    .viewimage img{width:100%}
+
+    .viewimage1{  border: 1px solid #cdcdcd;
+        height: 300px;
+        width: 100%;
+        overflow: hidden;}
+        .viewimage1 img{width:100%}
+
+
+.hasDatepicker{height: 25px;}
+.form-group input[type=text] {
+    height: 25px !important;
+}
+
+.radio{margin-top:4px !important;}
+
+label {
+ margin-bottom: 0px !important;
+}
+
+
+
+.checkboxmrg{margin-top:4px}
+
+
+.labeldiv label {
+    margin: 4px 0 0 0px !important;
+
+}
+
+
+.textboxwidth{width: 352px;}
+.checkbox, .radio {
+    margin-bottom: 0px !important;
+}
+.labeldiv {
+    height: 25px;
+    background: #ffffff;
+    border-right: 1px solid #ffffff;
+}
+
+.border {
+    border: 1px solid #ffffff !important;
+}
+
+#btnSave {
+    float: right;
+}
+
+#btnBack {
+    float: right;
+}
+
+.form-group {
+    margin-bottom: 0% !important;
+    display: block;
+    overflow: hidden;
+    margin-top: 0% !important;
+    clear: both;
+}
+
+.boxhead {
+    margin-top: 10px;
+    border: 2px solid #e6edf3;
+    border-radius: 4px;
+    left: -12px !important;
+    background-color: #f1f2f3;
+}
+    .btnDiv {
+        position: absolute;
+        bottom: 3px;
+        right: 8px;
+    }
+.maincontainer {
+    position: relative;
+    float:left;
+    width: 88%;
+}
+
+.rightmenu {
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: 21px;
+}
+
+.card-header {
+    background-color: #888888 !important;
+}
+
+.displayinlineblock {
+    display: inline-block;
+}
+
+
+
+.toolbar-content a {
+    color: inherit !important
+}
+
+#lblDispMessagezipnach {
+    position: absolute;
+    bottom: 20%;
+    font-size: 11.5px;
+}
+.accepted{background:#B2DCD2; border:1px solid #8EC3B7}
+.rejected{background:#E6CDCD; border:1px solid #F9BABA}
+.ifscbg, .bankbg{margin-bottom:2% !important;}
+.modal-header {
+    padding: 15px;
+    border-bottom: 0px;
+    background-color: transparent;
+}
+.modal-title{color:#05274a; font-weight: 600;}
+
+.close{    color: #05274a;
+    opacity: 1;}
+    .fa-close{color: #ef4f4f !important;}
+.instruct{font-size: 10.5px;
+    color: #bd1818;
+    line-height: 16px;
+    font-weight: bold;}
+#imageCropPopup .modal-dialog{ max-width: 90% !important;
+        width: 90% !important; margin: 10px auto !important;}
+
+#imageCropPopup .modal-dialog .modal-header {
+            padding: 0px !important;}
+.imgCon{ width:100%; height:650px; overflow:hidden; background: #969494;}
+.imgCon img{width: 100%; height:650px}
+.rightCon{padding:0px !important; margin-top:20px}
+.imageContainer{height:480px}
+
+.details h5{ padding-left:10px; padding-bottom:3px; font-size: 15px;
+    color: #0c335a;
+    font-weight: bold;
+    border-bottom: 1px solid #b3b3af;}
+.details p{ padding-left:10px; text-align: left;
+    color: #19232d;
+    font-size: 12px;
+    font-weight: 600;}
+ #imageCropPopup .modal-header .close{z-index:999}
+ .heading{ width: 116px !important;
+    display: inline-block;}
+
+   
+</style>
+<div class="main-content maincontainer">
+    <div class="content">
+
+        <form [formGroup]="NachMandate" autocomplete="off">
+
+            <div class="col-md-12 col-sm-6 col-xs-4 mt-2">
+
+                <div class="row">
+                    <div class="col-sm-3 col-md-4 col-xs-5">
+                        <!-- <span class="legal">NACH Mandate</span> -->
+                    </div>
+                    <div class="col-md-8 col-sm-9 col-xs-12">
+                        @*<div class="toolbar pull-right">
+                            <ul class="toolbar-content">
+
+
+                                <li  id="btnUploadA4" >
+                                    <i class="fa fa-upload" aria-hidden="true" title="Upload A4 Mandate"></i>
+                                    <label>
+                                        Upload A4 Mandate
+                                    </label>
+                                </li>
+
+                                <li  id="btnDownload" >
+                                    <i class="fa fa-download" aria-hidden="true"
+                                       title="Download Mandate"></i>
+
+                                    <label>
+                                        Download A4 Mandate
+                                    </label>
+                                </li>
+                                <li id="btnUpload" >
+                                    <i class="fa fa-upload" aria-hidden="true"
+                                       title="Upload Mandate"></i>
+                                    <label>
+                                        Upload Mandate
+                                    </label>
+                                </li>
+
+                            </ul>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12 mt-4">
+
+
+                @*<div class="col-md-12 col-sm-12 col-xs-12 loaderposition" *ngIf="Preloader">
+                    <img src="../../assets/images/loader.gif" style="margin-left: 45%;margin-top: 19%;" />
+                </div>*@
+
+            </div>
+
+
+            <div id="divform" class=" col-md-12 col-sm-12 col-xs-12 no-padding" >
+
+                <div class="col-md-12 col-sm-12 col-xs-12 no-padding-right"  style="margin-top:20px; margin-bottom:20px;">
+                    <div class="col-md-5 col-sm-5 col-xs-12 no-padding" style="display: none">
+                        <div class="form-group" style="margin-bottom: 5px;">
+                            <div class="col-sm-3 col-md-3 col-xs-3 no-padding modetypeform modeform" style="margin-top: 2px;">
+                                <label class="col-sm-12 col-md-12 no-padding col-xs-12 control-label">
+                                    Mandate Mode:
+                                </label>
+                            </div>
+                            <div id="DivMandateType" class="col-sm-9 col-md-9 col-xs-9 no-padding radio modewidthform  ">
+                                <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-2 no-padding">
+                                    <input name="MandateMode" id="rdnone" checked="checked" value="N" type="radio" formControlName="MandateMode">
+                                    <span>None</span>
+                                </label>
+                                <label id="lblphysical" class="lblradiobtnss col-md-3 col-sm-3 col-xs-3 no-padding-right physicalwidth">
+                                    <input name="MandateMode" id="rdphysical" value="P" type="radio" formControlName="MandateMode">
+                                    <span>Physical</span>
+                                </label>
+                                <label class="lblradiobtnss col-md-4 col-sm-4 col-xs-4 no-padding-right">
+                                    <input name="MandateMode" id="rdEmandate" value="E" type="radio" formControlName="MandateMode">
+                                    <span>E-Mandate</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding-right pl-0">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
+                                <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                                    <div class="form-group pull-right col-md-12 col-sm-12 col-xs-8 no-padding ">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-4 col-xs-5 no-padding">
+                                                <label class="col-sm-12 col-md-12  col-xs-12 control-label" style="font-size: 12px;">
+                                                    Product:
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-8 col-xs-7">
+
+                                                <select class=" col-sm-12 col-md-12 col-xs-12 " formControlName="Product" >
+                                                    <option value="" >Select</option>
+                                                    <option>
+                                                       
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-md-12 col-sm-12 col-xs-12"></div>
+                                <div class="form-group pull-right col-md-12 col-sm-12 col-xs-12 no-padding catogeriebox">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-sm-3 col-md-4 col-xs-5 no-padding">
+                                            <label class="col-sm-12 col-md-12  col-xs-12 control-label" style="font-size: 12px;">
+                                                Category Code:
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-7 col-sm-9 col-md-8 col-xs-7 no-padding">
+
+                                            <select class="col-md-12 col-xs-12 col-sm-12  no-padding-right" formControlName="Catagorycode" >
+                                                <option value="" selected >Select</option>
+                                                <option>
+                                                   
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-5 col-sm-7 col-xs-12 pull-right no-padding" id="DivModeType" style="display: none">
+                        <div class="form-group" style="margin-bottom: 5px;">
+                            <div class="col-sm-3 col-md-3 col-xs-3 no-padding modetypeform typetextalign" style="margin-top: 2px;">
+                                <label class="col-sm-12 col-md-12 no-padding col-xs-12 control-label">
+                                    Mandate Type:
+                                </label>
+                            </div>
+                            <div id="Div13" class="col-sm-9 col-md-9 col-xs-9 no-padding  radio ">
+                                <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-2 no-padding-right">
+                                    <input name="Mandatetype" id="rdoNone" checked="checked" value="None" type="radio" class="padding" formControlName="Mandatetype" />
+                                    <span>None</span>
+                                </label>
+                                <label class="lblradiobtnss col-md-5 col-sm-5 col-xs-5 no-padding-right ">
+                                    <input name="Mandatetype" id="rdoNACH" value="E" type="radio" formControlName="Mandatetype" />
+                                    <span>First EMI PDC + NACH</span>
+                                </label>
+                                <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-2 no-padding-right">
+                                    <input name="Mandatetype" id="rdoNPDC" value="N" type="radio" formControlName="Mandatetype" />
+                                    <span>NPDC</span>
+                                </label>
+                                <label class="lblradiobtnss col-md-3 col-sm-3 col-xs-3 no-padding-right">
+                                    <input name="Mandatetype" id="rdoPDC" value="F" type="radio" formControlName="Mandatetype" />
+                                    <span>Full PDC</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 no-padding-right mt-3">
+                    <div class="">
+                        <div class="scroll">
+                            <div id="accordion1" class="accordion-style1 panel-group">
+                                <div class="">
+
+                                    <div class="scroll">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding border">
+                                            <div class="row">
+                                                <div class="col-md-1 col-sm-1 col-xs-2" id="divqr">
+                                                    <img id="imgLogo" style="width: 100%; height: 45px;border:1px solid #cdcdcd;" >
+
+                                                </div>
+                                                <div class="col-md-11 col-sm-12 col-xs-12">
+                                                    <div class="col-sm-12 col-md-12 col-xs-12 no-padding-right">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding-left no-padding-right mandatetextboxborder">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-sm-3 col-md-4 col-xs-6   labeldiv p-0">
+                                                                            <label class="col-sm-12 col-md-12  col-xs-12 control-label  ">
+                                                                             UMRN
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-lg-8 col-sm-9 col-md-8 col-xs-6 mandatetextboxborder">
+                                                                            <input type="text" class=" col-sm-12 col-md-12 col-xs-12 " formControlName="Sponsorcode"/>
+                                                                               
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-sm-3 col-md-4 col-xs-4   labeldiv p-0">
+                                                                            <label class="col-sm-12 col-md-12 col-xs-12 control-label  ">
+                                                                              Date On
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-sm-9 col-md-8 col-xs-6 mandatetextboxborder no-padding-right">
+                                                                         
+                                                                            <input type="date" class=" col-sm-12 col-md-12 col-xs-12 " formControlName="Utilitycode"/>
+                                                                               
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xs-12 no-padding-right mt-2">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding-left no-padding-right mandatetextboxborder">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-sm-3 col-md-4 col-xs-6   labeldiv p-0">
+                                                                            <label class="col-sm-12 col-md-12  col-xs-12 control-label  ">
+                                                                                Sponsor Bank Code
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-lg-8 col-sm-9 col-md-8 col-xs-6 mandatetextboxborder">
+                                                                            <select class=" col-sm-12 col-md-12 col-xs-12 " formControlName="Sponsorcode">
+                                                                                <option value="">Select</option>
+                                                                                <option></option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding" style="margin-top:1px;">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-sm-3 col-md-4 col-xs-4   labeldiv p-0">
+                                                                            <label class="col-sm-12 col-md-12 col-xs-12 control-label  ">
+                                                                                Utility Code
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-lg-9 col-sm-9 col-md-8 col-xs-6 mandatetextboxborder no-padding-right">
+
+                                                                            <select class=" col-sm-12 col-md-12 col-xs-12 " formControlName="Utilitycode">
+                                                                                <option value="">Select</option>
+                                                                                <option></option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12  no-padding-left border mt-2">
+                                            <div class="row">
+                                                <div id="debitto" class="col-lg-3 col-sm-9 col-md-8 col-xs-12 no-padding radio " style="margin-top:0px">
+
+                                                    <label title="savings Account" class="lblradiobtnss col-md-4 col-sm-1 col-xs-4 no-padding-right">
+                                                        <input name="Todebit" id="rdsb"  type="checkbox">
+                                                        <span>Create</span>
+                                                    </label>
+                                                    <label title="Current Account" class="lblradiobtnss col-md-4 col-sm-2 col-xs-4 no-padding-right" >
+                                                        <input name="Todebit" id="rdca" value="ca"  type="checkbox">
+                                                        <span>Modify</span>
+                                                    </label>
+                                                    <label title="Cash Credit" class="lblradiobtnss col-md-4 col-sm-2 col-xs-4 no-padding-right">
+                                                        <input name="Todebit" id="rdcc" value="cc" type="checkbox" >
+                                                        <span>Cancel</span>
+                                                    </label>
+                                                   
+                                                 
+                                                  
+
+                                                </div>
+                                                <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 no-padding-left no-padding-right mandatetextboxborder">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5 col-sm-3 col-md-4 col-xs-5 no-padding labeldiv p-0">
+                                                                            <label class="col-sm-12 col-md-12  col-xs-12 control-label  ">
+                                                                                I/ We hereby Authorize
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-sm-9 col-md-8 col-xs-7 no-padding">
+                                                                            <input type="text" id="txtEntityName" formControlName="Authrizename"  class="col-sm-12 col-md-12 col-xs-12" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 p-0">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-2 col-sm-3 col-md-4 col-xs-12 no-padding labeldiv">
+                                                                            <label class="col-sm-12 col-md-12 col-xs-12 control-label">
+                                                                                To Debit
+                                                                            </label>
+                                                                        </div>
+                                                                        <div id="debitto" class="col-lg-10 col-sm-9 col-md-8 col-xs-12 no-padding-right radio " style="margin-top:0px">
+                                                                        
+                                                                                <label title="savings Account" class="lblradiobtnss col-md-2 col-sm-1 col-xs-4 no-padding-right" >
+                                                                                    <input name="Todebit" id="rdsb" (change)="Removeclasstodebir()" value="sb" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                    <span>SB</span>
+                                                                                </label>
+                                                                                <label title="Current Account" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'CA'">
+                                                                                    <input name="Todebit" id="rdca" value="ca" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                    <span>CA</span>
+                                                                                </label>
+                                                                                <label title="Cash Credit" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'CC'">
+                                                                                    <input name="Todebit" id="rdcc" value="cc" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                    <span>CC</span>
+                                                                                </label>
+                                                                                <label title="Saving-Non-Resident Rupee(NRE)" class="lblradiobtnss col-md-2 col-sm-3 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'SB-NRE'">
+                                                                                    <input name="Todebit" id="rdnbre" value="re" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                    <span>SB-NRE</span>
+                                                                                </label>
+                                                                                <label title="Saving-Non-Resident Ordinary(NRO)" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'SB-NRO'">
+                                                                                    <input name="Todebit" id="rdsbnrd" value="rd" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                    <span>SB-NRO</span>
+                                                                                </label>
+                                                                                <label title="Other" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'Other'">
+                                                                                    <input name="Todebit" id="rdother" value="ot" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                    <span>Other</span>
+                                                                                </label>
+                                                                          
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding border mt-2">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-sm-3 col-md-4 col-xs-4 labeldiv no-padding">
+                                                        <label class="col-sm-12 col-md-12 col-xs-12  control-label  ">
+                                                            Bank a/c Number
+                                                        </label>
+                                                    </div>
+                                                    <input name="ctl00$ContentPlaceHolder1$lblSmandateId" type="text" id="ContentPlaceHolder1_lblSmandateId" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$lblmandatecheckdata" type="text" id="ContentPlaceHolder1_lblmandatecheckdata" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtmandatetype" type="text" id="ContentPlaceHolder1_txtmandatetype" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtaccountcheck" type="text" id="ContentPlaceHolder1_txtaccountcheck" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckissecval" type="text" id="ContentPlaceHolder1_txtcheckissecval" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckemailval" type="text" id="ContentPlaceHolder1_txtcheckemailval" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckphoneval" type="text" id="ContentPlaceHolder1_txtcheckphoneval" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtNetValidateMail" type="text" id="ContentPlaceHolder1_txtNetValidateMail" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtNetManual" type="text" id="ContentPlaceHolder1_txtNetManual" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtNetSMS" type="text" id="ContentPlaceHolder1_txtNetSMS" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtDebitValidateMail" type="text" id="ContentPlaceHolder1_txtDebitValidateMail" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtDebitManual" type="text" id="ContentPlaceHolder1_txtDebitManual" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtDebitSMS" type="text" id="ContentPlaceHolder1_txtDebitSMS" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtAadharValidateMail" type="text" id="ContentPlaceHolder1_txtAadharValidateMail" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtAadharManual" type="text" id="ContentPlaceHolder1_txtAadharManual" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtAadharSMS" type="text" id="ContentPlaceHolder1_txtAadharSMS" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtphysical" type="text" id="ContentPlaceHolder1_txtphysical" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtemandate" type="text" id="ContentPlaceHolder1_txtemandate" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtevalidaion" type="text" id="ContentPlaceHolder1_txtevalidaion" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckifscvalid" type="text" id="ContentPlaceHolder1_txtcheckifscvalid" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtnetbankinglive" type="text" id="ContentPlaceHolder1_txtnetbankinglive" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtdebitlive" type="text" id="ContentPlaceHolder1_txtdebitlive" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtaadharlive" type="text" id="ContentPlaceHolder1_txtaadharlive" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckflag" type="text" id="ContentPlaceHolder1_txtcheckflag" class="status-lbl" style="display: none;">
+
+                                                    <input name="ctl00$ContentPlaceHolder1$txtentitymandatephysical" type="text" id="ContentPlaceHolder1_txtentitymandatephysical" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtentitymandateemandate" type="text" id="ContentPlaceHolder1_txtentitymandateemandate" class="status-lbl" style="display: none;">
+
+                                                    <input name="ctl00$ContentPlaceHolder1$txtentityaccountvalidationflag" type="text" id="ContentPlaceHolder1_txtentityaccountvalidationflag" class="status-lbl" style="display: none;">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtEmandatestatus" type="text" id="ContentPlaceHolder1_txtEmandatestatus" class="status-lbl" style="display: none;">
+                                                    <label id="lblActivityId" class="status-lbl" style="display: none;">
+                                                    </label>
+                                                    <label id="lbltruebankvalidationcheck" class="status-lbl" style="display: none;">
+                                                    </label>
+                                                    <div class="col-lg-10 col-sm-9 col-md-8 col-xs-8">
+                                                        <input type="text" class="col-sm-12 col-md-12 col-xs-12" id="txtAcNo" formControlName="Bankaccountno"
+                                                               [ngClass]="displayFieldCss('Bankaccountno')"
+                                                               maxlength="32" placeholder="" [attr.disabled]="Bankaccountnodisabled ? '' : null">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 border mt-2">
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 no-padding-left no-padding-right mandatetextboxborder">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-sm-3 col-md-4 col-xs-3  labeldiv no-padding">
+                                                                <label class="col-sm-12 col-md-12  col-xs-12 control-label  ">
+                                                                    With Bank
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9 withbankdropdown">
+                                                                <input type="text" style="display:none;" class="col-sm-12 col-md-12 col-xs-12 textboxposition" placeholder="">
+                                                                <i class="fa fa-search withbanksearch" aria-hidden="true" style="display:none;"></i>
+                                                                <input list="bank" id="txtwithbank" formControlName="Withbank" [ngClass]="displayFieldCss('Withbank')" [attr.disabled]="Withbankdisabled ? '' : null" name="bankList" (keyup)="RemovevalidateBankclass();" (change)="Bank_Change();" placeholder="">
+
+                                                                <datalist id="bank">
+                                                                    <option *ngFor="let WithBank of Table2" value={{WithBank.name}}>{{WithBank.name}} </option>
+                                                                    <!-- <option value="Bank of Baroda">
+                                                                    <option value="Canara Bank">
+                                                                    <option value="Oriental Bank of Commerce">
+                                                                    <option value="Syndicate Bank"> -->
+                                                                </datalist>
+                                                                <!-- <select class="withbankdrp col-lg-12 col-md-12 col-sm-12 col-xs-12" id="Withbank" (change)="Bank_Change();"
+                                                                formControlName="Withbank" [ngClass]="displayFieldCss('Withbank')" [attr.disabled]="Withbankdisabled ? '' : null">
+                                                                <option value="" selected>Select</option>
+                                                                <option *ngFor="let WithBank of Table2" value={{WithBank.name}}>{{WithBank.name}}</option>
+                                                                </select> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12  no-padding-right mandatetextboxborder">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-sm-3 col-md-4 col-xs-3  labeldiv no-padding">
+                                                                <label class="col-sm-12 col-md-12 col-xs-12   control-label  ">
+                                                                    IFSC
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9">
+                                                                <!-- <input type="text" class="col-sm-12 col-md-12 col-xs-12 textboxposition" placeholder="">
+                                                                <i class="fa fa-search ifscsearch" aria-hidden="true"></i> -->
+
+
+                                                                <input type="text" class="textboxposition"  name="ifsc" id="ifsc" formControlName="IFSC"  style="width: 100%; ">
+                                                                <i class="fa fa-search ifscsearch"  aria-hidden="true"></i>
+                                                                
+
+                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-5 col-sm-3 col-md-4 col-xs-3 labeldiv no-padding">
+                                                                <label class="col-sm-12 col-md-12  col-xs-12 control-label ">
+                                                                    or MICR
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-7 col-sm-9 col-md-8 col-xs-9 no-padding">
+
+                                                                <input type="text" class="textboxposition" name="ifsc" id="txtMICR"  style="width: 100%;">
+                                                                <i class="fa fa-search micrsearch"  aria-hidden="true"></i>
+                                                               
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding border mt-2">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-sm-3 col-md-4 col-xs-12 no-padding labeldiv">
+                                                        <label class="col-sm-12 col-md-12  col-xs-12 control-label">
+                                                            an amount of Rupees
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-8 col-sm-7 col-md-6 col-xs-12 pr-0">
+                                                        <input type="text" class="col-sm-12 col-md-12 col-xs-12" formControlName="Amount" id="txtAmount"
+                                                               [attr.disabled]="Amountcodedisabled ? '' : null" placeholder="">
+                                                    </div>
+
+                                                    <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 ">
+                                                        <input type="text" class="col-sm-12 col-md-12 col-xs-12" formControlName="Amountrupees" id="txtAmountRupees"
+                                                               [ngClass]="displayFieldCss('Amountrupees')" (keyup)="Amountrupees_keyup();" placeholder="" maxlength="9" [attr.disabled]="Amountrupeesdisabled ? '' : null">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding border mt-2">
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 no-padding-left no-padding-right mandatetextboxborder">
+                                                    <div class="form-group" style="margin-bottom: 0;">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-sm-3  col-md-4 col-xs-12 labeldiv">
+                                                                <label class="col-sm-12  col-md-12 col-xs-12 control-label ">
+                                                                    Frequency
+                                                                </label>
+                                                            </div>
+                                                            <div id="frequency" class="col-lg-8 col-sm-8 col-md-8 col-xs-12 radio radiobutton checkboxright" style="margin-left:8px">
+                                                                <ng-container *ngFor="let Frequency of Bindfrequencycodebind;">
+                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4  no-padding-right" *ngIf="Frequency.frequency === 'Monthly'">
+                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdmonthly" value="m" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                        <span>Monthly</span>
+                                                                    </label>
+                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Frequency.frequency === 'Quaterly'">
+                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdquaterly" value="q" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                        <span>Quarterly</span>
+                                                                    </label>
+                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Frequency.frequency === 'Half-Yearly'">
+                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdhalfyrly" value="h" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                        <span>Half-Yearly</span>
+                                                                    </label>
+                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Frequency.frequency === 'Yearly'">
+                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdyearly" value="y" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                        <span>Yearly</span>
+                                                                    </label>
+                                                                    <label class="lblradiobtnss col-md-4 col-sm-4 col-xs-6 no-padding-right" *ngIf="Frequency.frequency === 'As and When Presented'">
+                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="Radio1" value="a" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                        <span>As &amp; When Presented</span>
+                                                                    </label>
+                                                                </ng-container>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-sm-3 no-padding col-md-4 col-xs-3 labeldiv">
+                                                                <label id="Label16" class="col-sm-12  col-md-12 col-xs-12 control-label ">
+                                                                    Debit Type
+                                                                </label>
+                                                            </div>
+                                                            <div id="debittype" class="col-lg-9 col-sm-9 col-md-8 col-xs-9 no-padding-right radio radiodebittype" style="margin: 0;">
+                                                             
+                                                                    <label class="lblradiobtnss col-md-4 no-padding col-sm-3 col-xs-6" >
+                                                                        <input name="Debittype"  value="f" type="radio" formControlName="Debittype" />
+                                                                        <span>Fixed Amount</span>
+                                                                    </label>
+
+                                                                    <label class="lblradiobtnss col-md-6 col-sm-6 col-xs-6 " >
+                                                                        <input name="Debittype" id="rdmaxamt" value="m" type="radio" formControlName="Debittype" />
+                                                                        <span>Maximum Amount</span>
+                                                                    </label>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 border mt-2">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding-left no-padding-right mandatetextboxborder">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-3 col-md-4  col-xs-3 labeldiv no-padding">
+                                                                <label class="col-sm-12 col-md-12 no-padding-right col-xs-12 control-label  ">
+                                                                    Refrence 1
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-9 col-md-8 col-xs-9">
+<input type="text" class="col-sm-12 col-md-12 col-xs-12" id="txtRefrence1"  />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding-right p-0">
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-3 col-md-4  col-xs-4 labeldiv">
+                                                                <label class="col-sm-12 col-md-12 col-xs-12 control-label  ">
+                                                                    Phone Number
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-9 col-md-8 col-xs-8 no-padding-right">
+                                                                <input type="text" maxlength="10" formControlName="Phoneno" class="col-sm-12 col-md-12 col-xs-12"
+                                                                       id="txtPhNumber" [ngClass]="displayFieldCss('Phoneno')"
+                                                                       [attr.disabled]="Phonenodisabled ? '' : null">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 border mt-2">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding-left no-padding-right mandatetextboxborder">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-3 col-md-4  col-xs-3 labeldiv no-padding">
+                                                                <label class="col-sm-12 col-md-12 col-xs-12 control-label  ">
+                                                                    Refrence 2
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-9 col-md-8 col-xs-9 ">
+                                                                <input type="text" class="col-sm-12 col-md-12 col-xs-12" style="text-transform: uppercase" formControlName="Refrence2" id="txtRefrence2"
+                                                                    />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 no-padding-right p-0">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-3 col-md-4  col-xs-3 labeldiv">
+                                                                <label class="col-sm-12 col-md-12 col-xs-12 control-label  ">
+                                                                    Email ID
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-9 col-md-8 col-xs-9 no-padding-right">
+                                                                <input type="text" class="col-sm-12 col-md-12 col-xs-12" formControlName="Email"
+                                                                       [ngClass]="displayFieldCss('Email')" id="txtEmailId" maxlength="35" placeholder="" [attr.disabled]="Emaildisabled ? '' : null">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding mt-2">
+                                            <div class="col-sm-12 col-md-12 no-padding col-xs-12 labeldiv" style="background: none;
+                                                border: none;line-height: 25px;">
+                                                <label class="col-sm-12 col-md-12 no-padding col-xs-12 control-label " style="background: none;">
+                                                    I agree for the debit of mandate processing charges by the bank whom I am authorizing
+                                                    to debit my account as per latest schedule of charges of bank.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  period mt-2" style="bottom: 2px;">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 no-padding ">
+                                                    <div class="col-sm-3 col-md-3  col-xs-3 border no-padding-left" style="width: 88px;">
+                                                        <label class="col-sm-3 col-md-3 no-padding col-xs-3 control-label">
+                                                            Period
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12  border no-padding">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-sm-3 col-md-4   col-xs-3 labeldiv">
+                                                                    <label class="col-sm-3 col-md-3 no-padding col-xs-3 control-label  ">
+                                                                        From
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9">
+                                                                    <input type="date" id="txtFrom" formControlName="PeriodFrom" (change)="Fromdatechange_Change($event.target.value);"
+                                                                           [ngModel]="todayperiodfrom | date:'yyyy-MM-dd'" class="col-sm-12 col-md-12 col-xs-12 form-control"
+                                                                           placeholder="" tabindex="-1" [attr.disabled]="PeriodFromdisabled ? '' : null" [ngClass]="displayFieldCss('PeriodFrom')">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12  border no-padding mt-2">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-sm-3 col-xs-3 col-md-4    labeldiv">
+                                                                    <label class="col-sm-3 col-xs-3 col-md-3 no-padding control-label  ">
+                                                                        To
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9">
+                                                                    <input type="date" formControlName="PeriodTo" [ngModel]="todayperiodto | date:'yyyy-MM-dd'"
+                                                                           [ngClass]="{'divDisable' : _isActive}" (change)="Todatechange_Change($event.target.value);" id="txtTo"
+                                                                           class="form-control date-picker hasDatepicker col-sm-12 col-md-12 col-xs-12" name="date-picker" data-date-format="dd-MM-yyyy" tabindex="-1"
+                                                                           [attr.disabled]="Periodtocodedisabled ? '' : null" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 no-padding border mt-2">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-sm-3 col-md-4 col-xs-3 no-padding col-xs-3 labeldiv">
+                                                                    <label class="col-sm-3 col-md-3 col-xs-3 col-xs-3 control-label  ">
+                                                                        Or
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9 chkbox radiobutton">
+                                                                    <input id="chkUntil" type="checkbox" class="pull-left" checked="checked"
+                                                                           formControlName="Untillcancelled" (change)="chkUntil_Change();"
+                                                                           [attr.disabled]="Untillcancelledcodedisabled ? '' : null" />
+                                                                    <label class="control-label ">
+                                                                        Until Cancelled
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12  signblock p-0" style="margin-top: 3%;">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-sm-4 col-xs-4 no-padding-right">
+                                                                <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
+                                                                    Sign. Primary Acc. Holder
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                                                <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
+                                                                    Sign. Acc. Holder
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                                                <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
+                                                                    Sign. Acc. Holder
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 no-padding cust-name" style="margin-top: 2px;">
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                                                <div class="form-group">
+                                                                    <div class="">
+
+
+                                                                        <input type="text" (keyup)="Customer1_keyup()" class="col-sm-10 col-md-10 col-xs-12" style="text-transform: uppercase"
+                                                                               formControlName="Customer1" [ngClass]="displayFieldCss('Customer1')"
+                                                                               id="txtCust1" placeholder="" maxlength="40" [attr.disabled]="Customer1disabled ? '' : null" />
+                                                                        <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
+                                                                            1. Name as in Bank Records
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                                                <div class="form-group">
+                                                                    <div class="">
+                                                                        <input type="text" class="col-sm-10 col-md-10 col-xs-12" style="text-transform: uppercase" formControlName="Customer2" id="txtCust2" (keyup)="Customer2_keyup();" [attr.disabled]="Customer2disabled ? '' : null" maxlength="40" />
+
+                                                                        <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
+                                                                            2. Name as in Bank Records
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                                                <div class="form-group">
+                                                                    <div class="">
+                                                                        <input type="text" class="col-sm-12 col-md-10 col-xs-12" style="text-transform: uppercase" formControlName="Customer3" id="txtCust3" [attr.disabled]="Customer3disabled ? '' : null" maxlength="40" />
+                                                                        <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
+                                                                            3. Name as in Bank Records
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding " style="position:relative">
+                                            <label class="col-sm-12 col-md-12 no-padding col-xs-12 control-label " style="text-align: left;
+                                                background: none; top: 2px;line-height:25px;">
+                                                This is to confirm that declaration has been carefully read, understood and made
+                                                by me/us. I'm authorizing the user Entity/Corporate to debit my account based on
+                                                the instruction as agreed and signed by me. I've understood that I am authorized
+                                                to cancel/amend this mandate by appropriately communicating the cancellation/amendment
+                                                request to the User/Entity/Corporate or the bank where I've authorized the debit.
+                                            </label>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" [style.display]="showModalviewmandate ? 'block' : 'none'">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Scan Mandate
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" (click)="hideviewmandate()">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="col-md-12 col-sm-12 col-xs-12 validatePopup" style="margin-top: 0">
+                                <div class="viewimage">
+                                    <img src="../../assets/images/heroImg1.png">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal" id="myModal" [style.display]="showModaluploadmandate ? 'block' : 'none'">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="padding:5px">
+                            <h4 class="modal-title">
+                                Upload Mandate
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" (click)="hideuploadmandate()">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="col-md-12 col-sm-12 col-xs-12 validatePopup" style="margin-top: 0">
+                                <div class="col-md-12 col-sm-12 col-xs-12 no-padding" style="margin-top: 2%;">
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9 col-md-9 col-xs-9 pl-0 displayinlineblock">
+                                            <input type="file" name="myfile" class="col-sm-12 col-md-12 col-xs-12 pl-0" />
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9 col-md-12 col-xs-9 p-0 displayinlineblock mt-2">
+                                            <div class="viewimage1">
+                                                <img src="../../assets/images/heroImg1.png">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal" id="myModal" [style.display]="showModalAccountvalidation ? 'block' : 'none'">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Account Validation
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" (click)="hideAccountvalidation()">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="col-md-12 col-sm-12 col-xs-12 validatePopup" style="margin-top: 0">
+                                <div class="col-md-12 col-sm-12 col-xs-12 rejected p-2" style="margin-top: 2%;">
+                                    <div class="mb-2">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-xs-4 col-md-6 no-padding" style="padding-left: 5px">
+                                                Account Nomenclature
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-xs-4 col-md-6 no-padding amarlabel" style="padding-left: 5px">
+                                                    Mandate Name:
+                                                </label>
+                                                <label class="col-sm-8 col-xs-7 col-md-6 no-padding control-label lblfont" for="form-field-2">
+                                                    {{MandateName}}
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-xs-4 col-md-6 no-padding amarlabel" style="padding-left: 5px">
+                                                    Name as per bank:
+                                                </label>
+                                                <label class="col-sm-8 col-xs-7 col-md-6 no-padding control-label lblfont" for="form-field-2">
+                                                    {{NameAsPer}}
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-xs-4 col-md-6 no-padding amarlabel" style="padding-left: 5px">
+                                                    No of characters:
+                                                </label>
+                                                <label class="col-sm-8 col-xs-7 col-md-6 no-padding control-label lblfont" for="form-field-2">
+                                                    {{MandateNameLength}}
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-xs-6 col-md-6 no-padding amarlabel" style="padding-left: 5px">
+                                                    No of characters:
+                                                </label>
+                                                <label class="col-sm-8 col-xs-6 col-md-6 no-padding control-label lblfont" for="form-field-2">
+                                                    {{NameAsPerLength}}
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12" id="divNameMismatch" *ngIf="divNameMismatch">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-xs-6 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                                    Proceed as per:
+                                                </label>
+                                                <div class="col-sm-12 col-xs-7 col-md-9  radio no-padding-left">
+                                                    <label class="lblradiobtnss col-md-5 col-sm-6 col-xs-12 no-padding">
+
+                                                        <input name="rdNamemismatch" value="M" type="radio" [(ngModel)]="Mismatchflag" formControlName="rdNamemismatch">
+                                                        <span>Mandate Name</span>
+                                                    </label>
+                                                    <label class="lblradiobtnss col-md-6 col-sm-5 col-xs-12 no-padding">
+                                                        <input name="rdNamemismatch" value="B" type="radio" [(ngModel)]="Mismatchflag" formControlName="rdNamemismatch">
+                                                        <span>Bank Name</span>
+                                                    </label>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <input name="rbnetbanking" style="vertical-align: text-bottom;" value="B" type="radio">
+                                                    <label class="col-sm-3 col-xs-4 col-md-6 no-padding amarlabel" style="padding-left: 5px">
+                                                       Bank name:
+                                                    </label>
+                                                 <label class="col-sm-8 col-xs-7 col-md-6 no-padding control-label lblfont" for="form-field-2">
+                                                   HDFC
+                                                    </label>
+
+                                                </div>
+                                            </div>-->
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 col-xs-12 accepted p-2" style="margin-top: 2%;">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 col-xs-4 col-md-3 no-padding amarlabel">
+                                            Account No.:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2" style="font-weight:normal" id="lblemail">
+                                            {{ AcNo}}
+                                        </label>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2" style="font-weight:normal" id="lblemail">
+                                        {{ AcValidateErrorDesc}}
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hideAccountvalidation()">Proceed</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="myModal" [style.display]="showModalSelectMode ? 'block' : 'none'">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Select Mode
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" (click)="hideSelectMode()">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="col-md-12 col-sm-12 col-xs-12 validatePopup" style="margin-top: 0">
+                                <div class="col-md-12 col-sm-12 col-xs-12 no-padding" style="margin-top: 2%;">
+                                    <div class="form-group bankbg" name="divbankNameMode" id="divbankNameMode">
+                                        <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                            Bank Name:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2">
+                                            {{bankname}}
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group ifscbg" name="divifscmicrMode" id="divifscmicrMode">
+                                        <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                            IFSC/MICR :
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2">
+                                            {{IFSCMicr}}
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group ifscbg" name="diviLiveOnNachMode" id="diviLiveOnNachMode">
+                                        <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                            Live on NACH:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2">
+                                            {{LiveOnNach }}
+                                        </label>
+
+                                    </div>
+
+
+                                    <div class="form-group ifscbg" name="divDebitcardMode" id="divDebitcardMode">
+                                        <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                            Debit Card:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2">
+                                            {{liveonDebitcard}}
+                                        </label>
+
+                                    </div>
+                                    <div class="form-group ifscbg" name="divNetbankingMode" id="divNetbankingMode">
+                                        <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                            Net Banking:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2">
+                                            {{liveonNetbanking}}
+                                        </label>
+
+
+                                    </div>
+
+                                    <div class="form-group bankbg" id="DivMobile" name="DivMobile">
+                                        <label class="col-sm-4 col-xs-4 col-md-3 no-padding amarlabel">
+                                            Mobile No.:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2" style="font-weight:normal" id="lblmobile">
+                                            {{Mobile}}
+                                        </label>
+                                        <input type="text" onkeyup="RemoveEmandateClass();" id="txtmobileemandate" formControlName="txtmobileemandate" *ngIf="txtmobileemandate" (keypress)="numberOnly($event)" maxlength="10" class="col-sm-5 col-xs-5 col-md-5">
+
+                                    </div>
+                                    <div class="form-group bankbg" id="DivEmail" name="DivEmail">
+                                        <label class="col-sm-4 col-xs-4 col-md-3 no-padding amarlabel">
+                                            Email ID:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2" style="font-weight:normal" id="lblemail">
+                                            {{Email}}
+                                        </label>
+                                        <input type="text" onkeyup="RemoveEmandateClass();" id="txtemailemandate" formControlName="txtemailemandate" *ngIf="txtemailemandate" class="col-sm-5 col-xs-5 col-md-5">
+                                        <div class="col-sm-1 col-xs-1 col-md-1 no-padding pull-right">
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group bankbg" id="DivAmount" name="DivAmount">
+                                        <label class="col-sm-4 col-xs-4 col-md-3 no-padding amarlabel">
+                                            Amount:
+                                        </label>
+                                        <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label lblfont" for="form-field-2" id="lblamount">
+                                            {{Amount}}
+                                        </label>
+                                        <input type="text" (keypress)="Decimal($event);" (keyup)="Amountrupees_keyup();" id="txtamountemandate" formControlName="txtamountemandate" *ngIf="txtamountemandate" class="col-sm-5 col-xs-5 col-md-5">
+                                        <div class="col-sm-1 col-xs-1 col-md-1 no-padding pull-right">
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <label id="lblwarning" *ngIf="lblwarning" class="col-md-12 col-sm-12 col-xs-12 errortxt no-padding">
+                                        {{lblwarningtext}}
+                                    </label>
+
+                                    <label class="col-md-12 message-text no-padding" style="display: none;" id="lblemailwarn"></label>
+
+                                    <div id="Divmandatemode" class="form-group">
+                                        <label class="col-sm-5 col-xs-5 col-md-4 no-padding amarlabel">
+                                            Mandate Mode:
+                                        </label>
+                                        <div id="Divemandate" class="col-sm-7 col-xs-7 col-md-5 no-padding radio ">
+                                            <label id="lblphysicalcheck" *ngIf="lblphysicalcheck" class="lblradiobtnss col-md-6 col-sm-2 col-xs-2 no-padding">
+                                                <input id="radiophysical" formControlName="radiophysical" name="radiophysical" value="P" type="radio" [attr.disabled]="radiophysicalDisabled ? '' : null" (change)="Changeradiophysical($event)">
+                                                <span>Physical</span>
+                                            </label>
+                                            <label id="lblemandatecheck" *ngIf="lblemandatecheck" class="lblradiobtnss col-md-6 col-sm-5 col-xs-4 no-padding" style="margin-left: -11px;" (change)="ChangeradioEmandate($event)">
+                                                <input id="radiodemandate" formControlName="radiophysical" name="radiophysical" [attr.disabled]="radiodemandateDisabled ? '' : null" value="E" type="radio">
+                                                <span>E-Mandate</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="debitnetbank" class="form-group">
+                                        <label class="col-sm-12 col-xs-12 col-md-4 no-padding amarlabel">
+                                            Select E-Mandate Type:
+                                        </label>
+                                        <div id="netbankingDebitDiv" *ngIf="netbankingDebitDiv" class="col-sm-12 col-xs-7 col-md-7  radio no-padding-left">
+                                            <label class="lblradiobtnss col-md-4 col-sm-6 col-xs-12 no-padding">
+                                                <input id="rbnetbanking_Net" name="rbnetbankingEmandate" formControlName="rbnetbankingEmandate" value="N" type="radio" [attr.disabled]="rbnetbankingDisabled ? '' : null">
+                                                <span>Net Banking</span>
+                                            </label>
+                                            <label class="lblradiobtnss col-md-4 col-sm-5 col-xs-12 no-padding">
+                                                <input id="rbdebitcard_Debit" name="rbnetbankingEmandate" formControlName="rbnetbankingEmandate" value="D" type="radio" [attr.disabled]="rbdebitcardDisabled ? '' : null">
+                                                <span>Debit Card</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="SaveMandateMode()">Proceed</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+    <div class="btnDiv">
+        <!-- <input type="button" class="btn btn-success pull-right mr-2" (click)="onClicksuccessfull($event)" value="successfull"> -->
+
+        <input type="button" class="btn btn-success pull-right mr-2" (click)="onClickuploadmandate($event)" style="display:none;" value="Upload Mandate" />
+        <input type="button" class="btn btn-success pull-right mr-2" (click)="onClickviewmandate($event)" style="display:none;" value="Scan Mandate" />
+        <!--  <input type="button" class="btn btn-success pull-right mr-2" (click)="onClickproceed($event)" value="Proceed popup"/> -->
+        <input type="button" class="btn btn-success pull-right mr-2" (click)="onClickSelectMode($event)" value="Select Mode" id="btnSelectMode" *ngIf="btnSelectMode" style="display:none;">
+        @*<input type="button" class="btn btn-success  " id="btnEditDisable" value="Edit" />*@
+        @*<input type="button" class="btn btn-success" value="Cancel" id="btnCancel" />*@
+        <input type="button" class="btn btn-success pull-right mr-2" (click)="onClickAccountvalidation($event)" value="Account Validation" id="btnAcvalidate" *ngIf="btnAcvalidate" [attr.disabled]="btnAcvalidatedisabled ? '' : null" style="display:none;" />
+        <input type="button" class="btn btn-success pull-right mr-2" (click)="BankValidation_Click()" value="Bank Validation" id="btnBankValidation" *ngIf="btnBankValidation" [attr.disabled]="btnBankValidationdisabled ? '' : null" style="display:none;" />
+
+
+        <input type="button" class="btn btn-success " value="Save" />
+
+
+        <input type="button" class="btn btn-success pull-right mr-2" (click)="onClickPhysicalmandate($event)" value="Physical Mandate" style="display:none;" />
+        <input type="submit" name="" value="E-Mandate" class="btn btn-success pull-right TestEmandate mr-2" style="display:none" />
+
+        <input type="button" class="btn btn-success pull-right mr-2" value="Validate ENACH" style="display:none">
+        <input type="button" class="btn btn-success pull-right mr-2" value="Upload Mandate" (click)="onClickImageCrop($event)" id="btncropImage" *ngIf="btncropImage" style="display:none;">
+
+    </div>
+
+
+
+
+
+
+    <div class="modal successPopup" id="myModal" [style.display]="showModalmailsent ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/saveSuccessImg.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hidemailsent()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>Email and SMS sent successfully on customer email address and mobile number</p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidemailsent()">Ok</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal successPopup" id="myModal" [style.display]="showModalproceed ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/saveSuccessImg.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hideproceed()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <p>Are you sure you want to cancel ?</p>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="UpdateIsCancel()">Yes</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hideproceed()">No</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="modal successPopup" id="myModal" [style.display]="showModalSaved ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/saveSuccessImg.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hidesave()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>NACH Mandate saved successfully</p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidesave()">Ok</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal successPopup" id="myModal1" [style.display]="showModalCommon ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/saveSuccessImg.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hidecommonsave()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>{{msgwar}}</p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidecommonsave()">Ok</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal warningPopup" id="warningPopup" [style.display]="showModalPhysicalmandate ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/warning.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hidePhysicalmandate()">&times;</button>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to proceed with Physical?
+
+
+                    </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidePhysicalmandate()">Yes</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidePhysicalmandate()">No</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal warningPopup" id="SendlinkPopup" [style.display]="SendlinkPopup ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/warning.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hideSendlinkPopup()">&times;</button>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        Do you want to send a link to customer for E-mandate Registration?
+
+
+                    </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="Sendlinks()">Yes, send to customer</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="SendDirectlinks()">No, open here only</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal warningPopup" id="successfull" [style.display]="showModalsuccessfull ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/warning.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hidesuccessfull()">&times;</button>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        Account validated proceed for printing
+
+
+                    </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" id="btnPrint" class="btn btn-success" data-dismiss="modal" (click)="Print()">Print</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidesuccessfull()">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal deletePopup" id="deletePopup" [style.display]="showModaldeletePopup ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/warning.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hidedeletePopup()">&times;</button>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete?
+
+
+                    </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidedeletePopup()">Yes</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidedeletePopup()">No</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal updatePopup" id="deletePopup" [style.display]="showModalupdatePopup ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <!-- <img src="../../assets/images/warning.png" /> -->
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hideupdatePopup()">&times;</button>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to update?
+
+
+                    </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hideupdatePopup()">Yes</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hideupdatePopup()">No</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="modal" id="myModal" [style.display]="showModalpop ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        MSG
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hidepop()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text mt-3">
+                        <div class="form-group bankbg">
+                            <label class="col-sm-11 col-xs-11 col-md-11 amarlabel p-0">
+                                Sponsor Bank Code :
+                            </label>
+                            <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                        <div class="form-group bankbg">
+                            <label class="col-sm-11 col-xs-11 col-md-11 amarlabel p-0">
+                                Utility Code :
+                            </label>
+                            <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                        <div class="form-group bankbg">
+                            <label class="col-sm-11 col-xs-11 col-md-11 amarlabel p-0">
+                                Bank live on NACH :
+                            </label>
+                            <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                        <div class="form-group bankbg">
+                            <label class="col-sm-11 col-xs-11 col-md-11 amarlabel p-0">
+                                Bank live on ENACH :
+                            </label>
+                            <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                        <div class="form-group bankbg">
+                            <label class="col-sm-11 col-xs-11 col-md-11 amarlabel p-0">
+                                Amount &lt; = ENACH max. trx value :
+                            </label>
+                            <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                        <div class="form-group bankbg">
+                            <label class="col-sm-9 col-xs-8 col-md-9  amarlabel p-0">
+                                "To Date" mandatory for ENACH:
+                            </label>
+                            <label class="col-sm-2 col-xs-3 col-md-2 no-padding-left  control-label" for="form-field-2" id="blbtoDate" style="margin-top: 2px!important; margin-bottom: 0;
+                                display: none">
+                                <span class="pull-right">Edit</span><i class="fa fa-edit pull-right" style="margin-right: 5px;
+                                    margin-top: 2px;"></i>
+                            </label>
+                            <div class="col-sm-1 col-xs-1 col-md-1 no-padding pull-right">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                        <div class="form-group bankbg">
+                            <label class="col-sm-11 col-xs-11 col-md-11 amarlabel p-0">
+                                Single Signatory :
+                            </label>
+                            <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fa fa-close"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidepop()">Proceed</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hidepop()" style="display:none;">Physical Mandate</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Bank Validation
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="col-md-12 col-sm-12 col-xs-12 validatePopup" style="margin-top: 0">
+                        <div class="col-md-12 col-sm-12 col-xs-12 no-padding" style="margin-top: 2%;">
+                            <div class="form-group bankbg" name="divbankName" id="divbankName">
+                                <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                    Bank Name:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2" id="lblbankFullName">
+                                    {{bankname}}
+                                </label>
+                                <!-- <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <i class="fa fa-close"></i>
+                                </div> -->
+                            </div>
+                            <div class="form-group ifscbg " name="divifscmicr" id="divifscmicr">
+                                <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                    IFSC/MICR :
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2" id="lblIFSC">
+                                    {{IFSCMicr}}
+                                </label>
+
+                            </div>
+                            <div class="form-group ifscbg " name="diviLiveOnNach" id="diviLiveOnNach">
+                                <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                    Live on NACH:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2">
+                                    {{LiveOnNach }}
+                                </label>
+
+                            </div>
+                            <div class="form-group ifscbg " name="divLiveOnEmandate" id="divLiveOnEmandate">
+                                <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                    Live on Emandate:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2">
+                                    {{LiveOnEmandate}}
+                                </label>
+
+                            </div>
+
+                            <div class="form-group ifscbg " name="divDebitcard" id="divDebitcard">
+                                <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                    Debit Card:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2">
+                                    {{liveonDebitcard}}
+                                </label>
+
+                            </div>
+                            <div class="form-group ifscbg" name="divNetbanking" id="divNetbanking">
+                                <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                    Net Banking:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2">
+                                    {{liveonNetbanking}}
+                                </label>
+
+                            </div>
+                            <!--<div class="form-group ifscbg">
+                                <label class="col-sm-3 col-xs-4 col-md-3 no-padding amarlabel" style="padding-left: 5px">
+                                    Aadhar Card:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2">
+                                </label>
+                                <div class="col-sm-1 col-xs-1 col-md-1 no-padding">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+                            <div class="form-group bankbg" id="Div23">
+                                <label class="col-sm-4 col-xs-4 col-md-3 no-padding amarlabel">
+                                    Mobile No.:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2" style="font-weight:normal" id="lblmobile">
+                                </label>
+                                <input type="text" id="txtmobileemandate" maxlength="10" class="col-sm-5 col-xs-5 col-md-5" style="display:none">
+                                <div class="col-sm-1 col-xs-1 col-md-1 no-padding pull-right">
+
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <i class="fa fa-close"></i>
+                                    <i class="fa fa-pencil-square-o" id="imobileedit" aria-hidden="true" style=" vertical-align: bottom; font-size: 17px; margin:0px 0 6px 2px; color: #1f497d;display:none;"></i>
+
+                                </div>
+                            </div>
+                            <div class="form-group bankbg">
+                                <label class="col-sm-4 col-xs-4 col-md-3 no-padding amarlabel">
+                                    Email ID:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2" style="font-weight:normal" id="lblemail">
+                                </label>
+                                <input type="text" id="txtemailemandate" class="col-sm-5 col-xs-5 col-md-5" style="display:none">
+                                <div class="col-sm-1 col-xs-1 col-md-1 no-padding pull-right">
+
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <i class="fa fa-close"></i>
+                                    <i class="fa fa-pencil-square-o" id="iemailedit" aria-hidden="true" style="vertical-align: bottom; font-size: 17px; margin:0px 0 6px 2px; color: #1f497d;display:none; "></i>
+
+                                </div>
+                            </div>
+                            <div class="form-group bankbg">
+                                <label class="col-sm-4 col-xs-4 col-md-3 no-padding amarlabel">
+                                    Amount:
+                                </label>
+                                <label class="col-sm-8 col-xs-7 col-md-8 no-padding control-label" for="form-field-2" id="lblamount">
+                                </label>
+                                <input type="text" id="txtamountemandate" class="col-sm-5 col-xs-5 col-md-5" style="display:none">
+                                <div class="col-sm-1 col-xs-1 col-md-1 no-padding pull-right">
+
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <i class="fa fa-close"></i>
+                                    <i class="fa fa-pencil-square-o" id="iamountedit" aria-hidden="true" style="vertical-align: bottom; font-size: 17px; margin:0px 0 6px 2px; color: #1f497d;display:none; "></i>
+
+                                </div>
+                            </div>-->
+
+                            <label class="col-md-12 col-sm-12 col-xs-12 errortxt no-padding" id="Label14" style="display:none">
+                                Amount should not be greater than 100000
+                            </label>
+
+                            <label class="col-md-12 message-text no-padding" style="display: none;" id="lblemailwarn"></label>
+
+                            <!-- <div id="Divmandatemode" class="form-group">
+                                <label class="col-sm-5 col-xs-5 col-md-4 no-padding amarlabel">
+                                    Mandate Mode:
+                                </label>
+                                <div id="Divemandate" class="col-sm-7 col-xs-7 col-md-5 no-padding radio ">
+                                    <label id="physicalcheck" class="lblradiobtnss col-md-6 col-sm-2 col-xs-2 no-padding">
+                                        <input id="notacvalrdphysical" name="notacvalrbnetbanking" value="P" type="radio">
+                                        <span>Physical</span>
+                                    </label>
+                                    <label id="emandatecheck" class="lblradiobtnss col-md-6 col-sm-5 col-xs-4 no-padding" style="margin-left: -11px;">
+                                        <input id="notacvalrdemandate" name="notacvalrbnetbanking" value="E" type="radio">
+                                        <span>E-Mandate</span>
+                                    </label>
+                                </div>
+                            </div> -->
+                            <!--<div id="debitnetbank" class="form-group">
+                                <label class="col-sm-12 col-xs-12 col-md-4 no-padding amarlabel">
+                                    Select E-Mandate Type:
+                                </label>
+                                 <div id="netbanking" class="col-sm-12 col-xs-7 col-md-7  radio no-padding-left">
+                                    <label class="lblradiobtnss col-md-4 col-sm-6 col-xs-12 no-padding">
+                                        <input id="rbnetbanking" name="rbnetbanking" value="N" type="radio">
+                                        <span>Net Banking</span>
+                                    </label>
+                                    <label class="lblradiobtnss col-md-4 col-sm-5 col-xs-12 no-padding">
+                                        <input id="rbdebitcard" name="rbnetbanking" value="D" type="radio">
+                                        <span>Debit Card</span>
+                                    </label>
+                                    <label class="lblradiobtnss col-md-4 col-sm-5 col-xs-4 no-padding" id="aadharbankingshow">
+                                        <input id="rbadharcard" name="rbnetbanking" value="A" type="radio">
+                                        <span>Aadhar Card</span>
+                                    </label>
+                                </div>
+                            </div>-->
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hide()">Proceed</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="modal" id="imageCropPopup" [style.display]="showModalCrop ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" (click)="hideModalCrop()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 pb-2" style="margin-top: 0">
+                        <div class="col-md-6 col-sm-6 col-xs-12 p-2 mt-2 leftCon">
+                            <span class="instruct">* File format required JPEG, size should not be more than 3MB and resolution must be equal to or greater than 300dpi.  </span>
+                            <div class="imgCon">
+
+                                <!-- <image-cropper
+                                  [style.display]="showCropper ? null : 'none'"
+                                  [imageChangedEvent]="imageurl"
+                                    [maintainAspectRatio]="false"
+                                    [cropper]="cropper"
+
+                                   (imageLoaded)="imageLoaded()"
+                                ></image-cropper> -->
+                                <img [src]="imageurl" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 rightCon">
+                            <div class="mt-3">
+
+                                <input type="file" (change)="Filechangeevent($event,1)" />
+
+
+                            </div>
+                            <div class="imageContainer">
+                                <img [src]="Cropimageurl" />
+                            </div>
+                            <input type="button" class="btn btn-success pull-right mr-2" (click)="CropMandate()" value="Crop" *ngIf="btnCrop" [attr.disabled]="btncropImagedisabled ? '' : null" />
+                            <input type="button" class="btn btn-success pull-right mr-2" (click)="UploadMandate()" value="Upload" *ngIf="btnupload" />
+
+                            <label id="lblName">{{lblmsg}}</label>
+                            <input type="button" class="btn btn-success pull-right mr-2" data-dismiss="modal" (click)="hideModalCrop()" value="Ok" *ngIf="btnok" />
+                            <div class="details">
+                                <h5>Mandate Details</h5>
+                                <p><span class="heading">Reference 1:</span><span>{{Referenceno}} </span></p>
+                                <p><span class="heading">Account No.:</span><span>{{AccountNumber}}</span></p>
+                                <p><span class="heading">Customer Name:</span><span>{{CustomerName}}</span></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="imageCropPopup" [style.display]="showViewMandate ? 'block' : 'none'">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" (click)="hideMandate()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 pb-2" style="margin-top: 0">
+                        <div class="col-md-6 col-sm-6 col-xs-12 p-2 mt-2 leftCon">
+                            <span class="instruct">* File format required JPEG, size should not be more than 3MB and resolution must be equal to or greater than 300dpi.  </span>
+                            <div class="imgCon">
+
+                                <!-- <image-cropper
+                                  [style.display]="showCropper ? null : 'none'"
+                                  [imageChangedEvent]="imageurl"
+                                    [maintainAspectRatio]="false"
+                                    [cropper]="cropper"
+
+                                   (imageLoaded)="imageLoaded()"
+                                ></image-cropper> -->
+                                <img [src]="imageurl" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 rightCon">
+                            <div class="mt-3">
+
+                                <input type="file" (change)="Filechangeevent($event,1)" />
+
+
+                            </div>
+                            <div class="imageContainer">
+                                <img [src]="Cropimageurl" />
+                            </div>
+                            <input type="button" class="btn btn-success pull-right mr-2" (click)="CropMandate()" value="Crop" *ngIf="btnCrop" [attr.disabled]="btncropImagedisabled ? '' : null" />
+                            <input type="button" class="btn btn-success pull-right mr-2" (click)="UploadMandate()" value="Upload" *ngIf="btnupload" />
+
+                            <label id="lblName">{{lblmsg}}</label>
+                            <input type="button" class="btn btn-success pull-right mr-2" data-dismiss="modal" (click)="hideModalCrop()" value="Ok" *ngIf="btnok" />
+                            <div class="details">
+                                <h5>Mandate Details</h5>
+                                <p><span class="heading">Reference 1:</span><span>{{Referenceno}} </span></p>
+                                <p><span class="heading">Account No.:</span><span>{{AccountNumber}}</span></p>
+                                <p><span class="heading">Customer Name:</span><span>{{CustomerName}}</span></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
