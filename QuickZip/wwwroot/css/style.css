@@ -30430,3 +30430,87 @@ i#sideicon {
     font-weight: normal;
     src: local('Segoe UI Bold'), url('~/assets/fonts/Segoe UI Bold Italic.woff') format('woff');
 }
+
+
+  @media only screen and (max-width: 1400px){
+        .signblock{margin-left:1% !important;}
+        .checkboxright{margin-left:9px;}
+        .withbankdropdown{margin-left: -2px;}
+        }
+
+        @media only screen and (max-width: 1300px){
+            .signblock{margin-left:1% !important;}
+            .checkboxright{margin-left:0px;}
+            .withbankdropdown{margin-left: 0px;}
+            }
+        @media only screen and (max-width: 1200px){
+            .signblock{margin-left:1% !important;}
+            }
+
+    @media only screen and (max-width: 998px){
+        .signblock{margin-left:1% !important;}
+       
+        .content{
+            overflow-y: auto;
+         }
+         .btnDiv {
+            position: absolute;
+            bottom: 64px;
+            right: 15px;
+        }
+        .period{margin-top:2%;}
+         .radiodebittype{margin-left: -5px !important;}
+}
+
+
+    @media only screen and (max-width:767px) {
+        .maincontainer{
+     
+      width: 99% !important;
+  }
+  .content{
+    overflow-y: auto;
+ }
+ 
+.checkbox label, .radio label {
+    padding-left: 16px;
+}
+.radio input[type=radio]{
+    margin-top: 1px !important;
+   }
+   .radiobutton{margin-left: 6px !important;
+
+   }
+   .btnDiv{
+    position: absolute !important;
+    bottom: 61px !important;
+    right: 10px !important;
+}
+}
+@media only screen and (max-width:570px) {
+    .radio input[type=radio]{
+        margin-top: -5px !important;
+       }
+       .radiobutton{margin-left: 16px !important;
+
+       }
+    }
+@media only screen and (max-width:450px) {
+    .radio input[type=radio]{
+margin-top: -1px !important;
+}
+.radiobutton{margin-left: 16px !important;
+
+}
+.btnDiv{
+    position: absolute !important;
+    bottom: 61px !important;
+    right: 10px !important;
+}
+.lblpaddingdiv{
+        padding-left: 0px !important;
+    }
+    .paddingboth {
+        padding:0px!important;
+    }
+}
