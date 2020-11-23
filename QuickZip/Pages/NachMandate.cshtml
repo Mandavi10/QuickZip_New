@@ -4,6 +4,8 @@
     ViewData["Title"] = "Nach Mandate";
 }
 <style>
+
+
     input[type=checkbox] {
         vertical-align: middle;
     }
@@ -211,7 +213,9 @@ label {
  .heading{ width: 116px !important;
     display: inline-block;}
 
-   
+
+
+
 </style>
 <div class="main-content maincontainer">
     <div class="content">
@@ -514,27 +518,27 @@ label {
                                                                         <div id="debitto" class="col-lg-10 col-sm-9 col-md-8 col-xs-12 no-padding-right radio " style="margin-top:0px">
                                                                         
                                                                                 <label title="savings Account" class="lblradiobtnss col-md-2 col-sm-1 col-xs-4 no-padding-right" >
-                                                                                    <input name="Todebit" id="rdsb" (change)="Removeclasstodebir()" value="sb" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                    <input name="Todebit" id="rdsb" value="sb" type="radio"  formControlName="Todebit">
                                                                                     <span>SB</span>
                                                                                 </label>
-                                                                                <label title="Current Account" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'CA'">
-                                                                                    <input name="Todebit" id="rdca" value="ca" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                <label title="Current Account" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right">
+                                                                                    <input name="Todebit" id="rdca" value="ca"  type="radio"  formControlName="Todebit">
                                                                                     <span>CA</span>
                                                                                 </label>
-                                                                                <label title="Cash Credit" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'CC'">
-                                                                                    <input name="Todebit" id="rdcc" value="cc" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                <label title="Cash Credit" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" >
+                                                                                    <input name="Todebit" id="rdcc" value="cc"  type="radio" formControlName="Todebit">
                                                                                     <span>CC</span>
                                                                                 </label>
-                                                                                <label title="Saving-Non-Resident Rupee(NRE)" class="lblradiobtnss col-md-2 col-sm-3 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'SB-NRE'">
-                                                                                    <input name="Todebit" id="rdnbre" value="re" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                <label title="Saving-Non-Resident Rupee(NRE)" class="lblradiobtnss col-md-2 col-sm-3 col-xs-4 no-padding-right" >
+                                                                                    <input name="Todebit" id="rdnbre" value="re" type="radio" >
                                                                                     <span>SB-NRE</span>
                                                                                 </label>
-                                                                                <label title="Saving-Non-Resident Ordinary(NRO)" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'SB-NRO'">
-                                                                                    <input name="Todebit" id="rdsbnrd" value="rd" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                <label title="Saving-Non-Resident Ordinary(NRO)" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" >
+                                                                                    <input name="Todebit" id="rdsbnrd" value="rd"  type="radio">
                                                                                     <span>SB-NRO</span>
                                                                                 </label>
-                                                                                <label title="Other" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Todebit.todebit == 'Other'">
-                                                                                    <input name="Todebit" id="rdother" value="ot" (change)="Removeclasstodebir()" type="radio" [attr.disabled]="Todebit.isenable == true ? null : 'disabled'" formControlName="Todebit">
+                                                                                <label title="Other" class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" >
+                                                                                    <input name="Todebit" id="rdother" value="ot"  type="radio">
                                                                                     <span>Other</span>
                                                                                 </label>
                                                                           
@@ -555,44 +559,14 @@ label {
                                                             Bank a/c Number
                                                         </label>
                                                     </div>
-                                                    <input name="ctl00$ContentPlaceHolder1$lblSmandateId" type="text" id="ContentPlaceHolder1_lblSmandateId" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$lblmandatecheckdata" type="text" id="ContentPlaceHolder1_lblmandatecheckdata" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtmandatetype" type="text" id="ContentPlaceHolder1_txtmandatetype" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtaccountcheck" type="text" id="ContentPlaceHolder1_txtaccountcheck" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckissecval" type="text" id="ContentPlaceHolder1_txtcheckissecval" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckemailval" type="text" id="ContentPlaceHolder1_txtcheckemailval" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckphoneval" type="text" id="ContentPlaceHolder1_txtcheckphoneval" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtNetValidateMail" type="text" id="ContentPlaceHolder1_txtNetValidateMail" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtNetManual" type="text" id="ContentPlaceHolder1_txtNetManual" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtNetSMS" type="text" id="ContentPlaceHolder1_txtNetSMS" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtDebitValidateMail" type="text" id="ContentPlaceHolder1_txtDebitValidateMail" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtDebitManual" type="text" id="ContentPlaceHolder1_txtDebitManual" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtDebitSMS" type="text" id="ContentPlaceHolder1_txtDebitSMS" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtAadharValidateMail" type="text" id="ContentPlaceHolder1_txtAadharValidateMail" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtAadharManual" type="text" id="ContentPlaceHolder1_txtAadharManual" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtAadharSMS" type="text" id="ContentPlaceHolder1_txtAadharSMS" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtphysical" type="text" id="ContentPlaceHolder1_txtphysical" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtemandate" type="text" id="ContentPlaceHolder1_txtemandate" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtevalidaion" type="text" id="ContentPlaceHolder1_txtevalidaion" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckifscvalid" type="text" id="ContentPlaceHolder1_txtcheckifscvalid" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtnetbankinglive" type="text" id="ContentPlaceHolder1_txtnetbankinglive" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtdebitlive" type="text" id="ContentPlaceHolder1_txtdebitlive" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtaadharlive" type="text" id="ContentPlaceHolder1_txtaadharlive" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtcheckflag" type="text" id="ContentPlaceHolder1_txtcheckflag" class="status-lbl" style="display: none;">
+                                                    
+                                             
+                                            
 
-                                                    <input name="ctl00$ContentPlaceHolder1$txtentitymandatephysical" type="text" id="ContentPlaceHolder1_txtentitymandatephysical" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtentitymandateemandate" type="text" id="ContentPlaceHolder1_txtentitymandateemandate" class="status-lbl" style="display: none;">
-
-                                                    <input name="ctl00$ContentPlaceHolder1$txtentityaccountvalidationflag" type="text" id="ContentPlaceHolder1_txtentityaccountvalidationflag" class="status-lbl" style="display: none;">
-                                                    <input name="ctl00$ContentPlaceHolder1$txtEmandatestatus" type="text" id="ContentPlaceHolder1_txtEmandatestatus" class="status-lbl" style="display: none;">
-                                                    <label id="lblActivityId" class="status-lbl" style="display: none;">
-                                                    </label>
-                                                    <label id="lbltruebankvalidationcheck" class="status-lbl" style="display: none;">
-                                                    </label>
+                                              
                                                     <div class="col-lg-10 col-sm-9 col-md-8 col-xs-8">
                                                         <input type="text" class="col-sm-12 col-md-12 col-xs-12" id="txtAcNo" formControlName="Bankaccountno"
-                                                               [ngClass]="displayFieldCss('Bankaccountno')"
-                                                               maxlength="32" placeholder="" [attr.disabled]="Bankaccountnodisabled ? '' : null">
+                                                             >
                                                     </div>
                                                 </div>
                                             </div>
@@ -610,20 +584,10 @@ label {
                                                             <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9 withbankdropdown">
                                                                 <input type="text" style="display:none;" class="col-sm-12 col-md-12 col-xs-12 textboxposition" placeholder="">
                                                                 <i class="fa fa-search withbanksearch" aria-hidden="true" style="display:none;"></i>
-                                                                <input list="bank" id="txtwithbank" formControlName="Withbank" [ngClass]="displayFieldCss('Withbank')" [attr.disabled]="Withbankdisabled ? '' : null" name="bankList" (keyup)="RemovevalidateBankclass();" (change)="Bank_Change();" placeholder="">
+                                                                <input list="bank" id="txtwithbank" formControlName="Withbank" name="bankList"  placeholder="">
 
-                                                                <datalist id="bank">
-                                                                    <option *ngFor="let WithBank of Table2" value={{WithBank.name}}>{{WithBank.name}} </option>
-                                                                    <!-- <option value="Bank of Baroda">
-                                                                    <option value="Canara Bank">
-                                                                    <option value="Oriental Bank of Commerce">
-                                                                    <option value="Syndicate Bank"> -->
-                                                                </datalist>
-                                                                <!-- <select class="withbankdrp col-lg-12 col-md-12 col-sm-12 col-xs-12" id="Withbank" (change)="Bank_Change();"
-                                                                formControlName="Withbank" [ngClass]="displayFieldCss('Withbank')" [attr.disabled]="Withbankdisabled ? '' : null">
-                                                                <option value="" selected>Select</option>
-                                                                <option *ngFor="let WithBank of Table2" value={{WithBank.name}}>{{WithBank.name}}</option>
-                                                                </select> -->
+                                                               
+                                                               
                                                             </div>
                                                         </div>
                                                     </div>
@@ -637,10 +601,7 @@ label {
                                                                 </label>
                                                             </div>
                                                             <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9">
-                                                                <!-- <input type="text" class="col-sm-12 col-md-12 col-xs-12 textboxposition" placeholder="">
-                                                                <i class="fa fa-search ifscsearch" aria-hidden="true"></i> -->
-
-
+                                                              
                                                                 <input type="text" class="textboxposition"  name="ifsc" id="ifsc" formControlName="IFSC"  style="width: 100%; ">
                                                                 <i class="fa fa-search ifscsearch"  aria-hidden="true"></i>
                                                                 
@@ -681,12 +642,11 @@ label {
                                                     </div>
                                                     <div class="col-lg-8 col-sm-7 col-md-6 col-xs-12 pr-0">
                                                         <input type="text" class="col-sm-12 col-md-12 col-xs-12" formControlName="Amount" id="txtAmount"
-                                                               [attr.disabled]="Amountcodedisabled ? '' : null" placeholder="">
+                                                              >
                                                     </div>
 
                                                     <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 ">
-                                                        <input type="text" class="col-sm-12 col-md-12 col-xs-12" formControlName="Amountrupees" id="txtAmountRupees"
-                                                               [ngClass]="displayFieldCss('Amountrupees')" (keyup)="Amountrupees_keyup();" placeholder="" maxlength="9" [attr.disabled]="Amountrupeesdisabled ? '' : null">
+                                                        <input type="text" class="col-sm-12 col-md-12 col-xs-12" formControlName="Amountrupees" id="txtAmountRupees" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -702,28 +662,28 @@ label {
                                                                 </label>
                                                             </div>
                                                             <div id="frequency" class="col-lg-8 col-sm-8 col-md-8 col-xs-12 radio radiobutton checkboxright" style="margin-left:8px">
-                                                                <ng-container *ngFor="let Frequency of Bindfrequencycodebind;">
-                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4  no-padding-right" *ngIf="Frequency.frequency === 'Monthly'">
-                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdmonthly" value="m" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                
+                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4  no-padding-right" >
+                                                                        <input name="Frequency" id="rdmonthly" value="m" type="radio" />
                                                                         <span>Monthly</span>
                                                                     </label>
                                                                     <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Frequency.frequency === 'Quaterly'">
-                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdquaterly" value="q" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                        <input name="Frequency"  value="q" type="radio"  formControlName="Frequency" />
                                                                         <span>Quarterly</span>
                                                                     </label>
-                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Frequency.frequency === 'Half-Yearly'">
-                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdhalfyrly" value="h" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right">
+                                                                        <input name="Frequency"  id="rdhalfyrly" value="h" type="radio"  />
                                                                         <span>Half-Yearly</span>
                                                                     </label>
-                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" *ngIf="Frequency.frequency === 'Yearly'">
-                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="rdyearly" value="y" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                    <label class="lblradiobtnss col-md-2 col-sm-2 col-xs-4 no-padding-right" >
+                                                                        <input name="Frequency"  value="y" type="radio" />
                                                                         <span>Yearly</span>
                                                                     </label>
-                                                                    <label class="lblradiobtnss col-md-4 col-sm-4 col-xs-6 no-padding-right" *ngIf="Frequency.frequency === 'As and When Presented'">
-                                                                        <input name="Frequency" (change)="Removeclassfrequency()" id="Radio1" value="a" type="radio" [attr.disabled]="Frequency.isenable == true ? null : 'disabled'" formControlName="Frequency" />
+                                                                    <label class="lblradiobtnss col-md-4 col-sm-4 col-xs-6 no-padding-right" >
+                                                                        <input name="Frequency"  id="Radio1" value="a" type="radio"/>
                                                                         <span>As &amp; When Presented</span>
                                                                     </label>
-                                                                </ng-container>
+                                                             
                                                             </div>
                                                         </div>
                                                     </div>
@@ -783,8 +743,7 @@ label {
                                                             </div>
                                                             <div class="col-lg-8 col-sm-9 col-md-8 col-xs-8 no-padding-right">
                                                                 <input type="text" maxlength="10" formControlName="Phoneno" class="col-sm-12 col-md-12 col-xs-12"
-                                                                       id="txtPhNumber" [ngClass]="displayFieldCss('Phoneno')"
-                                                                       [attr.disabled]="Phonenodisabled ? '' : null">
+                                                                       id="txtPhNumber" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -818,7 +777,7 @@ label {
                                                             </div>
                                                             <div class="col-lg-8 col-sm-9 col-md-8 col-xs-9 no-padding-right">
                                                                 <input type="text" class="col-sm-12 col-md-12 col-xs-12" formControlName="Email"
-                                                                       [ngClass]="displayFieldCss('Email')" id="txtEmailId" maxlength="35" placeholder="" [attr.disabled]="Emaildisabled ? '' : null">
+                                                                       >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -851,9 +810,8 @@ label {
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9">
-                                                                    <input type="date" id="txtFrom" formControlName="PeriodFrom" (change)="Fromdatechange_Change($event.target.value);"
-                                                                           [ngModel]="todayperiodfrom | date:'yyyy-MM-dd'" class="col-sm-12 col-md-12 col-xs-12 form-control"
-                                                                           placeholder="" tabindex="-1" [attr.disabled]="PeriodFromdisabled ? '' : null" [ngClass]="displayFieldCss('PeriodFrom')">
+                                                                    <input type="date" id="txtFrom" class="col-sm-12 col-md-12 col-xs-12 form-control"
+                                                                           placeholder="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -867,10 +825,9 @@ label {
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9">
-                                                                    <input type="date" formControlName="PeriodTo" [ngModel]="todayperiodto | date:'yyyy-MM-dd'"
-                                                                           [ngClass]="{'divDisable' : _isActive}" (change)="Todatechange_Change($event.target.value);" id="txtTo"
-                                                                           class="form-control date-picker hasDatepicker col-sm-12 col-md-12 col-xs-12" name="date-picker" data-date-format="dd-MM-yyyy" tabindex="-1"
-                                                                           [attr.disabled]="Periodtocodedisabled ? '' : null" />
+                                                                    <input type="date" 
+                                                                          id="txtTo"
+                                                                           class="form-control date-picker hasDatepicker col-sm-12 col-md-12 col-xs-12" name="date-picker"  />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -884,9 +841,7 @@ label {
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-lg-9 col-sm-9 col-md-8 col-xs-9 chkbox radiobutton">
-                                                                    <input id="chkUntil" type="checkbox" class="pull-left" checked="checked"
-                                                                           formControlName="Untillcancelled" (change)="chkUntil_Change();"
-                                                                           [attr.disabled]="Untillcancelledcodedisabled ? '' : null" />
+                                                                    <input id="chkUntil" type="checkbox" class="pull-left" checked="checked"/>
                                                                     <label class="control-label ">
                                                                         Until Cancelled
                                                                     </label>
@@ -922,9 +877,7 @@ label {
                                                                     <div class="">
 
 
-                                                                        <input type="text" (keyup)="Customer1_keyup()" class="col-sm-10 col-md-10 col-xs-12" style="text-transform: uppercase"
-                                                                               formControlName="Customer1" [ngClass]="displayFieldCss('Customer1')"
-                                                                               id="txtCust1" placeholder="" maxlength="40" [attr.disabled]="Customer1disabled ? '' : null" />
+                                                                        <input type="text"  class="col-sm-10 col-md-10 col-xs-12" style="text-transform: uppercase" id="txtCust1" placeholder="" maxlength="40"  />
                                                                         <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
                                                                             1. Name as in Bank Records
                                                                         </label>
@@ -934,7 +887,7 @@ label {
                                                             <div class="col-md-4 col-sm-4 col-xs-4">
                                                                 <div class="form-group">
                                                                     <div class="">
-                                                                        <input type="text" class="col-sm-10 col-md-10 col-xs-12" style="text-transform: uppercase" formControlName="Customer2" id="txtCust2" (keyup)="Customer2_keyup();" [attr.disabled]="Customer2disabled ? '' : null" maxlength="40" />
+                                                                        <input type="text" class="col-sm-10 col-md-10 col-xs-12" style="text-transform: uppercase" formControlName="Customer2" id="txtCust2"  maxlength="40" />
 
                                                                         <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
                                                                             2. Name as in Bank Records
@@ -945,7 +898,7 @@ label {
                                                             <div class="col-md-4 col-sm-4 col-xs-4">
                                                                 <div class="form-group">
                                                                     <div class="">
-                                                                        <input type="text" class="col-sm-12 col-md-10 col-xs-12" style="text-transform: uppercase" formControlName="Customer3" id="txtCust3" [attr.disabled]="Customer3disabled ? '' : null" maxlength="40" />
+                                                                        <input type="text" class="col-sm-12 col-md-10 col-xs-12" style="text-transform: uppercase" formControlName="Customer3" id="txtCust3"  maxlength="40" />
                                                                         <label class="col-md-12 col-sm-12 col-xs-12 no-padding" style="background: none;">
                                                                             3. Name as in Bank Records
                                                                         </label>
@@ -985,7 +938,7 @@ label {
 
 
 
-            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" [style.display]="showModalviewmandate ? 'block' : 'none'">
+            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" >
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <!-- Modal Header -->
