@@ -30464,6 +30464,19 @@ i#sideicon {
 
 
     @media only screen and (max-width:767px) {
+        #createuser .modal-dialog {
+            margin: 3px 0 0 0% !important;
+        }
+
+        .successPopup .modal-dialog {
+            width: 90%;
+        }
+
+        .toolbar-content li {
+            margin-right: 4px !important;
+            padding: 1px 6px 0px 1px !important;
+        }
+
         .maincontainer{
      
       width: 99% !important;
@@ -30471,6 +30484,7 @@ i#sideicon {
   .content{
     overflow-y: auto;
  }
+
  
 .checkbox label, .radio label {
     padding-left: 16px;
