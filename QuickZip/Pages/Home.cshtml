@@ -1,0 +1,1928 @@
+﻿@page
+@model QuickZip.Pages.HomeModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+
+<style>
+.maincontainer{ position: relative;
+    float:left;
+    width: 88%;}
+    .loaderOverlay{ background: #fff;
+        clear: both;
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position:absolute;
+        z-index: 999;}
+    .loaderposition{ position: relative;
+        margin: 21% 45%;
+        /* margin-left: 45%; */
+        display: block;
+        z-index: 9999 !important; }
+        .loaderposition img{width:6%}
+.fontsize18{font-size:18px !important;}
+.fontsize20{font-size:20px !important;}
+    .filter input[type="text"] {
+        width: 160%;
+        padding: 2px 20px 2px 10px;
+        border: solid 1px #ece8e8 !important;
+        border-radius: 2px !important;
+        height: 26px !important;
+    }
+
+    .filter .fa-search {
+        position: absolute;
+        right: -100px;
+        top: 6px;
+        color: #c7bebe;
+        font-size: 13px;
+    }
+    .toolbar-content li {
+        list-style: none;
+        float: left;
+        padding: 1px 6px 0px 1px;
+        cursor: pointer;
+        /* border: 1px solid #ffffff; */
+        margin-right: 4px;
+        border-radius: 2px;
+    }
+
+.scrollbarnew{ overflow-y: auto;
+    max-height: 257px;
+    overflow-x: hidden;
+}
+
+.menuBox{width: 100%;
+    background: transparent;
+    border-radius: 0px;
+    padding: 4px 6px 0px 6px;
+    display: inline-block;
+    text-align: left;
+    color: #003974;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 0px;
+     margin-top: 5px;
+    cursor: pointer;
+    vertical-align: top;
+    list-style: none;
+
+}
+
+a {
+    color: #003974;
+    text-decoration: none;
+    background-color: transparent;
+}
+/* .menuBox:hover{ background: #e8e6e6cd;
+    box-shadow: 1px 1px 2px 1px #cdcdcd;
+} */
+
+/* ul li ul li:hover{background: #e8e6e6cd;
+    box-shadow: 1px 1px 2px 1px #cdcdcd;
+}
+
+ul li ul li{border-bottom: 1px solid #cdcdcd;
+    border-right: 1px solid #cdcdcd;
+padding: 4px 6px 0px 6px;
+} */
+li ul{margin-left:0px}
+.singleMenu ul li ul li:hover, .multipleMenu ul li ul li ul li:hover{background: #e8e6e6;
+    box-shadow: 1px 1px 2px  #cdcdcd;}
+.singleMenu ul li ul li, .multipleMenu ul li ul li ul li{border-bottom: 1px solid #e6e0e0;
+    border-right: 1px solid #e6e0e0;}
+    .singleMenu ul li ul li a, .multipleMenu ul li ul li ul li a{font-size: 14px;
+        color: #000;
+        padding-top: 4px;
+    }
+
+.menuItem{padding-bottom: 8px;}
+.menuItem a{ display: block;}
+.submenuBox{ width: 98%; font-size:13px; list-style:none}
+.menuImg{ background: #003974;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block; text-align: center;
+    vertical-align: top; box-shadow: 1px 1px 2px 1px #b3bac3;}
+.menuImg i{ color: #fff;
+    font-size: 15px;
+    vertical-align: middle; padding-top: 3px;}
+
+    .padding-0 {
+        padding:0px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .secondlevel{ background: #ea6868;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        box-shadow: 1px 1px 2px 1px #b3bac3;}
+
+
+
+
+
+
+    .secondlevel i{ color: #fff;
+        font-size: 14px;
+        vertical-align: middle;}
+    .menuTitle{width: 220px;
+        
+        padding-left: 5px;
+        font-size: 13px !important;
+        color: #144577;
+    font-weight: normal;}
+
+    .divscroll {
+        overflow-y: scroll;
+        height: 577px;
+    }
+
+   
+ 
+
+</style>
+
+
+
+<div class="main-content maincontainer">
+    <div class="content divscroll">
+            <div>
+
+                   
+                <div class="col-md-12 col-sm-12 col-xs-12 padding-0">
+
+                    <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                        <ul>
+                            <li class="menuBox">
+
+                                <ul>
+                                    <li class="menuBox">
+                                        <div class="menuItem">
+
+                                            <span class="menuImg">
+                                                <i class="fa fa-home"></i>
+                                            </span>
+                                            <span class="menuTitle">
+                                                Home
+                                            </span>
+                                        </div>
+                                    </li>
+
+
+
+                                </ul>
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                        <ul>
+                            <li class="menuBox">
+
+                                <ul>
+
+
+                                    <li class="menuBox">
+                                        <div class="menuItem">
+
+                                            <span class="menuImg">
+                                                <i class="fa fa-file"></i>
+                                            </span>
+                                            <span class="menuTitle">
+                                                Dashboard
+                                            </span>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                        <ul>
+                            <li class="menuBox">
+
+
+
+
+                                <ul>
+                                    <li class="menuBox">
+                                        <div class="menuItem">
+
+
+                                            <span class="menuTitle fontsize18">
+                                                User
+                                            </span>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li class="menuBox">
+                                        <div class="menuItem">
+
+                                            <span class="menuImg">
+                                                <i class="fa fa-users" aria-hidden="true"></i>
+
+                                            </span>
+                                            <span class="menuTitle">
+                                                All Users
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                        <ul>
+                            <li class="menuBox">
+
+
+
+
+                                <ul>
+                                    <li class="menuBox">
+                                        <div class="menuItem">
+
+
+                                            <span class="menuTitle fontsize18">
+                                               Mandates
+                                            </span>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li class="menuBox">
+                                        <div class="menuItem">
+
+                                            <span class="menuImg">
+                                                <i class="fa fa-file" aria-hidden="true"></i>
+
+                                            </span>
+                                            <span class="menuTitle">
+                                               New Mandate
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+
+
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Physical Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Create NACH Mandate
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Registered Physical Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Rejected Physical Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        In-process Physical Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Cancelled Physical Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        E-Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Registered E-Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Rejected E-Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        In-process E-Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Cancelled E-Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Aadhar Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Registered Aadhar Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Rejected Aadhar Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        In-process Aadhar Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Cancelled Aadhar Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Direct Debit Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Registered Direct Debit Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Rejected Direct Debit Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        In-process Direct Debit Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Cancelled Direct Debit Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Mandate Analysis
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Physical Mandate Analysis
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        E-Mandate Analysis
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Aadhar Mandate Analysis
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Direct Debit Mandate Analysis
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        All UMRN
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Registered UMRN
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Rejected UMRN
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Cancelled UMRN
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Expired UMRN
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Direct Debit Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Bulk Mandate
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bulk Physical Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bulk E-Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bulk-Aadhar Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bulk Direct Debit Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Legacy UMRN Upload
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Debit Presentation
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        All Debit Presentations
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+
+
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Physical Mandate Reconciliation
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Physical Mandate Request
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Upload Physical Mandate Response
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        UMRN Not Received
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Final Response Not Received
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+
+
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Debit Presentation Reconciliation
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Debit Presentation Request
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Debit Presentation Response
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Sponsor Bank Presentation Activities
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        NPCI uploadable request file
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-download" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Download On-Us Request File
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Upload Response file (NACH/On-Us)
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        NPCI response upload
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        E-Mandate Reconciliation
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        E-Mandate Transactions
+                                                    </span>
+
+
+
+
+                                                </div>
+                                            </li>
+
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+                                        <div class="menuItem" style="display:none;">
+
+                                            <span class="menuImg">
+                                                <i class="fa fa-file"></i>
+                                            </span>
+                                            <span class="menuTitle">
+
+                                            </span>
+                                        </div>
+
+
+
+                                        <ul class="scrollbarnew">
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Sponsor Bank Mandates Activities
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Download NACH Request File
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Download On-Us Request File
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Download NPCI uploadale request file
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        NPCI response upload
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Upload Response file (NACH/On-Us)
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Under Process Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Registered Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Rejected Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Initial Rejected Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        All Processed Mandates
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bank End Data Entry
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Sponsor Bank Data Entry
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Single Image - Single Date Entry
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                            Bulk Image - Single Data Entry
+                                                    </span>
+
+
+                                                </div>
+                                            </li>
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bulk Image - Bulk Data Entry
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Corporate Admin
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Corporate Roles
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bank Roles
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Yoeki Roles
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                      Bank Admin
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Corporate Roles
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Bank Roles
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Yoeki Roles
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+                                        <ul class="scrollbarnew" >
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Corporate Setup
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Corporate Setup Request
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-university" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Create Corporate
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Product Master
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        State Master
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Region Master
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Branch Master
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Holiday Master
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        IFSC/MICR Master
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Acount Validation Masters
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-lock" aria-hidden="true"></i>
+
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        API Master
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        API Setup
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Support Masters
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Module Master
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-file"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Sub-Module Master
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Link Configuration
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+
+
+
+
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-link" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Link Setup
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+
+                                        </ul>
+
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 col-xs-12 padding-0">
+                                <ul>
+                                    <li class="menuBox">
+
+                                        <ul>
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+
+                                                    <span class="menuTitle fontsize18">
+                                                        Support
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Issue Tracking Dashboard
+                                                    </span>
+                                                </div>
+                                            </li>
+
+                                            <li class="menuBox">
+                                                <div class="menuItem">
+
+                                                    <span class="menuImg">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                    <span class="menuTitle">
+                                                        Create Support Request
+                                                    </span>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div> 
+
+            </div>
+       
+
+    </div>
+</div>
