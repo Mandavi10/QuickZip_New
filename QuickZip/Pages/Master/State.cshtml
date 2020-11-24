@@ -1,0 +1,173 @@
+﻿@page
+@model QuickZip.Pages.Master.StateModel
+@{
+    ViewData["Title"] = "State";
+}
+
+<script>
+    var columnDefs = [
+        { headerName: "Sr. No.", field: "srno",width:'80px', sortable: true },
+        { headerName: "State Code", field: "StateCode", width: '120px', sortable: true },
+        { headerName: "State Name", field: "StateName", width: '120px', sortable: true },
+        { headerName: "Country", field: "Country", width: '120px', sortable: true },
+        { headerName: "Created By", field: "CreatedBy", width: '150px', sortable: true },
+        { headerName: "Created On", field: "CreatedOn", width: '150px', sortable: true },
+        { headerName: "Updated By", field: "UpdatedBy", width: '150px', sortable: true },
+        { headerName: "Updated On", field: "UpdatedOn", width: '15 0px', sortable: true }
+    ];
+
+    var rowData = [
+        { srno: "1", StateCode: "91", StateName: "UP", Country: "India", CreatedBy: "Abhishek", CreatedOn:'23/11/2020', UpdatedBy: 'Raj', UpdatedOn:'23/11/2020' },
+      
+    ];
+
+    var gridOptions = {
+        columnDefs: columnDefs,
+        rowData: rowData,
+        pagination: true
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var gridDiv = document.querySelector('#myGrid');
+        new agGrid.Grid(gridDiv, gridOptions);
+    });
+</script>
+
+
+<div class="main-content maincontainer">
+    <div class="content">
+        <div class="col-md-12 col-sm-6 col-xs-4 contnt-wrapper">
+            <div class="col-sm-6 col-md-6 col-xs-3 no-padding">
+                <span class="legal"></span>
+
+            </div>
+            <div class="rightmenu">
+                <div class="toolbar pull-right">
+                    <ul class="toolbar-content">
+                        <li>
+                            <i class="fa fa-file-excel-o" aria-hidden="true" title="Export to Excel"></i>
+                            <label>
+                                Export to Excel
+                            </label>
+                        </li>
+                        <li data-toggle="modal" data-target="#userForm">
+                            <i class="fa fa-plus" aria-hidden="true" title="New"></i>
+                            <label>
+                                New
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12 tableDiv" id="tbldiv">
+            <div class="filter">
+
+                <input type="text" placeholder="Search" id="txtSearch" />
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+
+
+
+            <div id="myGrid" style="height: 510px; width:100%;" class="ag-theme-alpine"></div>
+            @*<div class="paginationDiv">
+                    <span class="previousBtn" >Previous</span>
+                    <span class="paginationCount" >5 Out of 100</span>
+                    <span class="nextBtn" >Next</span>
+                </div>*@
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal right fade" id="userForm" tabindex="-1" role="dialog" aria-labelledby="userForm" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <button type="button" class="closeDiv" data-dismiss="modal">&times;</button>
+
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="col-md-12 col-sm-6 col-xs-4 contnt-wrapper">
+                    <div class="col-sm-6 col-md-6 col-xs-3 no-padding">
+                        <h4 class="pageTitle">
+                            Create State
+                        </h4>
+
+                    </div>
+                    <div class="rightmenu">
+                        <div class="toolbar pull-right">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12 divForm" id="divForm">
+                    <form>
+
+
+                        <div class="row no-padding mt-2">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
+                                            State Code:
+                                        </label>
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <input type="text" name="UserName" maxlength="30" id="UserName" class="col-sm-12 col-md-12 col-xs-12" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
+                                            State Name:
+                                        </label>
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <input type="text" name="phoneno" class="col-sm-12 col-md-12 col-xs-12" minlength="10" maxlength="10" />
+                                        </div>
+                                    </div>
+                                </div>
+                             
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-12 col-md-5 col-xs-12 control-label no-padding" for="form-field-1">
+                                            Country:
+                                        </label>
+                                        <div class="col-sm-12 col-md-7 col-xs-12 no-padding displayinlineblock">
+                                            <select class="withbankdrp col-sm-12 col-md-12 col-xs-12">
+                                                <option selected="" value="">Select</option>
+                                                <option>India</option>
+                                                <option>Nepal</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+             
+
+                            </div>
+                        </div>
+                        
+
+
+                    </form>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Save</button>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
