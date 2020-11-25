@@ -1,0 +1,667 @@
+﻿@page
+@model QuickZip.Pages.Master.ModuleMasterModel
+@{
+    ViewData["Title"] = "Module Master";
+}
+<script>
+    var columnDefs = [
+        { headerName: 'Sr. No.', field: 'Srno', width: 80 },
+        { headerName: 'Module Name', field: 'ModuleName', width: 150 },
+        { headerName: 'Description', field: 'Description', width: 150 },
+        { headerName: 'Created By', field: 'Createdby', width: 150 },
+        { headerName: 'Created On', field: 'createdon', width: 150 },
+       
+        { headerName: 'Updated By', field: 'UpdatedBy', width: 150 },
+        { headerName: 'Updated On', field: 'Updatedon', width: 150 },
+        { headerName: 'Status', field: 'IsActive', width: 150 },
+        { headerName: '', field: 'ModuleId', hide: true }
+    ];
+
+    var rowData = [
+        { Srno: '1', ModuleName: 'Module-001', Description: 'Abc', Createdby: 'Tarun sharma', createdon: '24-05-2020', UpdatedBy: 'Tarun sharma', Updatedon: '24-05-2020', IsActive: "Active", ModuleId: "001"},
+        { Srno: '2', ModuleName: 'Module-001', Description: 'Abc', Createdby: 'Tarun sharma', createdon: '24-05-2020', UpdatedBy: 'Tarun sharma', Updatedon: '24-05-2020', IsActive: "Active", ModuleId: "001" },
+        { Srno: '3', ModuleName: 'Module-001', Description: 'Abc', Createdby: 'Tarun sharma', createdon: '24-05-2020', UpdatedBy: 'Tarun sharma', Updatedon: '24-05-2020', IsActive: "Active", ModuleId: "001" },
+    ];
+
+    var gridOptions = {
+        columnDefs: columnDefs,
+        rowData: rowData,
+        pagination: true
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var gridDiv = document.querySelector('#myGrid');
+        new agGrid.Grid(gridDiv, gridOptions);
+    });
+</script>
+<style>
+    .mfooter {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+    }
+
+    .content {
+        position: relative
+    }
+
+    .chipsContainer {
+        padding: 5px 0px 5px 5px;
+        width: 84%;
+        overflow: hidden;
+        position: relative;
+        height: 30px;
+        border: solid 1px #eee;
+        cursor: pointer;
+    }
+
+    .dropDownIcon {
+        position: absolute;
+        width: 35px;
+        height: 26px;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+    }
+
+    .dateIcon {
+        position: absolute;
+        right: 17px;
+        top: 5px;
+        width: 6%;
+    }
+
+    .dropDownIcon.active {
+        transform: rotate(-180deg);
+    }
+
+    .dropDownIcon svg {
+        width: 15px;
+    }
+
+    .chipsContainer ul {
+        margin: 0 30px 0 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        width: calc(100% - 30px);
+        overflow: auto;
+    }
+
+        .chipsContainer ul li {
+            padding: 1px 2px 1px 8px;
+            background: #003974;
+            color: #fff;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            border-radius: 3px;
+            margin-right: 5px;
+            white-space: nowrap
+        }
+
+            .chipsContainer ul li .deleteCity {
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #43709e;
+                border-radius: 3px;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+
+    .citiesListFilter {
+        position: relative;
+        padding: 10px;
+        background: #fff;
+        border: solid 1px #eee;
+    }
+
+    .citiList {
+        z-index: 999;
+        width: 82%;
+        position: absolute;
+        margin-top: 7px;
+        left: 0;
+        background: #fff;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+
+        .citiList ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .citiList ul li {
+                font-size: 13px;
+            }
+
+                .citiList ul li label {
+                    display: flex;
+                    align-items: center;
+                    padding: 2px 10px;
+                    cursor: pointer;
+                }
+
+                .citiList ul li:hover {
+                    background: #eee;
+                }
+
+                .citiList ul li.selected {
+                    background: #003974;
+                    color: #fff;
+                }
+
+                .citiList ul li input {
+                    width: 15px;
+                    height: 15px;
+                    border: 0;
+                    background: #333;
+                    margin-right: 3px;
+                }
+
+    .filter {
+        margin-bottom: 2px;
+    }
+
+        .filter input {
+            width: 100%;
+            padding: 5px 10px;
+            border: solid 1px #eee;
+            border-radius: 3px;
+        }
+
+    .form-group > label {
+        margin-bottom: 4px;
+        vertical-align: top;
+    }
+
+    #createuser {
+        background: rgba(0,0,0,0.3) !important;
+    }
+
+        #createuser .modal-dialog {
+            margin: 3px 0 0 64% !important;
+        }
+
+    .card-header {
+        padding: 0px;
+    }
+
+    .tbluserlist {
+        border: 1px solid #cdcdcd;
+    }
+
+    .withbankdrp {
+        width: 100%;
+    }
+
+    input[type=text] {
+        border-radius: 0px !important;
+    }
+
+    select {
+        border-radius: 0px;
+    }
+
+    .formbox {
+        border: 1px solid #cdcdcd;
+        border-radius: 5px;
+        background-color: #f8fbfb;
+    }
+
+    .userlistpop, .modal-header {
+        background-color: #00172e;
+    }
+
+    .close {
+        color: #ffffff;
+        opacity: 1;
+    }
+
+    .modal-title {
+        color: #ffffff !important;
+    }
+
+    .tbluserlist tbody {
+        /*display: inline-block;*/
+        max-height: 68vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+        .tbluserlist tbody td {
+            white-space: nowrap;
+        }
+
+        .tbluserlist tbody tr {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+        }
+
+
+    .tbluserlist thead tr {
+        width: 100%;
+        display: table;
+        table-layout: fixed;
+    }
+
+
+
+
+    .tbluserlist {
+        display: inline-block;
+    }
+
+    .boxhead {
+        margin-top: 10px;
+        border: 2px solid #e6edf3;
+        border-radius: 4px;
+        left: -12px !important;
+        background-color: #f1f2f3;
+    }
+
+    .maincontainer {
+        position: relative;
+        float: left;
+        width: 88%;
+    }
+
+    .closeDiv {
+        color: #1b4d80;
+        position: absolute;
+        right: 10px;
+        font-size: 37px !important;
+        top: -12px;
+        font-weight: 600;
+        border: 0px;
+        background: transparent;
+        z-index: 999;
+    }
+
+    .btnDiv {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .card-header {
+        background-color: #888888 !important;
+    }
+
+    .displayinlineblock {
+        display: inline-block;
+    }
+
+    #createuser .modal-dialog {
+        max-width: 500px;
+    }
+
+    .pageTitle {
+        margin-top: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #002851;
+    }
+
+    #createuser .modal-header .close {
+        position: absolute;
+        right: 9px;
+        top: -14px;
+        margin: 0px;
+    }
+
+    #createuser .modal-header {
+        background-color: #143b63;
+    }
+
+    #createuser .modal-content {
+        height: 658px
+    }
+
+    .chipsContainer {
+        padding: 1px 0px 1px 5px;
+        max-width: 95%;
+        overflow: hidden;
+        position: relative;
+        height: 26px;
+        width: 100%;
+        border: solid 1px #d5d5d5;
+        cursor: pointer;
+    }
+
+    .dropDownIcon {
+        position: absolute;
+        width: 21px;
+        /* height: 35px; */
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+    }
+
+        .dropDownIcon.active {
+            transform: rotate(-180deg);
+        }
+
+        .dropDownIcon svg {
+            width: 15px;
+        }
+
+    .chipsContainer ul {
+        margin: 0 15px 0 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        width: calc(100% - 15px);
+        overflow: auto;
+    }
+
+        .chipsContainer ul li {
+            padding: 1px 0px 1px 5px;
+            background: #1b4d80;
+            color: #fff;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            border-radius: 3px;
+            margin-right: 5px;
+            white-space: nowrap
+        }
+
+            .chipsContainer ul li .deleteCity {
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #899fb5;
+                border-radius: 3px;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+
+    .citiesListFilter {
+        position: relative;
+        padding: 10px;
+        background: #fff;
+        border: solid 1px #eee;
+    }
+
+    .citiList {
+        width: 100%;
+        position: relative;
+        /* top: 100%; */
+        right: 0px;
+        left: 0;
+        background: #fff;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+        z-index: 9999;
+    }
+
+        .citiList ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .citiList ul li {
+                font-size: 13px;
+            }
+
+                .citiList ul li label {
+                    display: flex;
+                    align-items: center;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                }
+
+                .citiList ul li:hover {
+                    background: #eee;
+                }
+
+                .citiList ul li.selected {
+                    background: #2d5d8e;
+                    color: #fff;
+                }
+
+                .citiList ul li input {
+                    width: 15px;
+                    height: 15px;
+                    border: 0;
+                    background: #333;
+                }
+
+    .filterdropdown {
+        margin-bottom: 10px;
+    }
+
+        .filterdropdown input {
+            padding: 5px 10px;
+            border: solid 1px #eee;
+            border-radius: 3px;
+            width: 100%
+        }
+
+    .paginationDiv {
+        position: absolute;
+        bottom: 20px;
+        right: 15px;
+    }
+
+    .fileupdate {
+        width: 69px;
+        position: absolute;
+        top: 4px;
+        opacity: 0;
+    }
+</style>
+<div class="main-content maincontainer">
+    <div class="content">
+        <div class="col-md-12 col-sm-12 col-xs-12 contnt-wrapper">
+
+
+            <div class="rightmenu">
+                <div class="toolbar pull-right">
+                    <ul class="toolbar-content">
+
+
+                        <!--
+
+                        <li>
+                            <i class="fa fa-download" aria-hidden="true" title="Save"></i>
+                            <label>
+                                Download Template
+                            </label>
+                        </li>
+                        <li>
+                            <i class="fa fa-upload" aria-hidden="true" title="Upload User"></i>
+                            <label>
+                                Upload User
+                            </label>
+                        </li>  -->
+
+                        <li>
+                            <i class="fa fa-file-excel-o" aria-hidden="true" title="Save"></i>
+                            <label>
+                                Export to Excel
+                            </label>
+                        </li>
+                        @*<li>
+                            <i class="fa fa-download" aria-hidden="true" title="Save"></i>
+                            <label>
+                                Download Template
+                            </label>
+                        </li>*@
+                        <li data-toggle="modal" data-target="#userForm">
+                            <i class="fa fa-plus" aria-hidden="true" title="New"></i>
+                            <label>
+                                New
+                            </label>
+                        </li>
+                        @*<li>
+                            <i class="fa fa-upload" aria-hidden="true" title="New"></i>
+                            <label>
+                                Upload User
+                            </label>
+                            <input type="file" class="fileupdate" id="fileinput" />
+                        </li>*@
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4"></div>
+            <div class="col-md-5 col-sm-4 col-xs-4"></div>
+
+
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 paddingboth">
+            <div class="col-md-6 col-lg-4 col-sm-6 col-xs-12 p-0 selectDate">
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-2 col-xs-12 control-label no-padding" for="form-field-1">
+                        Date:
+                    </label>
+
+                    <div class="col-sm-9 col-md-7 col-xs-12 paddingboth pl-0 displayinlineblock">
+
+                        <input type="Date" id="txtDateRangePicker" placeholder="Select Date" class="form-control">
+                        @*<img src="../assets/images/calendar-icon.png" class="dateIcon" />*@
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-md-6 col-lg-4 col-sm-6 col-xs-12 p-0 ">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-2 col-xs-12 control-label no-padding" for="form-field-1">
+                            Bank:
+                        </label>
+
+
+                        <div class="col-sm-9 col-md-7 col-xs-12 pl-0 paddingboth displayinlineblock">
+
+                            <select class="col-sm-12 col-md-12 col-xs-12" id="bankid">
+                                <option selected="" value="">Select</option>
+                                <option selected="" value="">RBL</option>
+                                <option selected="" value="">Union Bank</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 mt-2 tableDiv paddingboth" id="tbldiv" style="display:block;">
+            <div class="col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="filter">
+                    <input type="text" id="txtSearch" placeholder="Search" />
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 mt-4" style="display:none">
+                    <div class="col-md-12 col-sm-12 col-xs-12 loaderposition">
+                        <img src="../../../assets/images/loader.gif" class="loaderimagepage" />
+                    </div>
+                </div>
+                <div id="myGrid" style="height: 483px; width:100%;" class="ag-theme-alpine"></div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+        @*<div class="paginationDiv">
+                <span class="previousBtn">Previous</span>
+                <span class="paginationCount" id="lblcount"></span>
+                <span class="nextBtn">Next</span>
+            </div>*@
+
+
+
+    </div>
+
+</div>
+
+
+
+<div class="modal right fade" id="userForm" tabindex="-1" role="dialog" aria-labelledby="userForm" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <button type="button" class="closeDiv" data-dismiss="modal" (click)="hideholidaymaster()">&times;</button>
+
+
+            <!-- Modal body -->
+            <div class="modal-body" appNorightclick>
+                <div class="col-md-12 col-sm-12 col-xs-12  contnt-wrapper">
+                    <div class="col-sm-12 col-md-12 col-xs-12 no-padding">
+                        <h4 class="pageTitle">   Module Master</h4>
+
+                    </div>
+                    <div class="rightmenu">
+                        <div class="toolbar pull-right">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12 no-padding " id="divForm" style="display:block">
+                    <form>
+                        <div class="row no-padding mt-2">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-5 col-md-3 col-lg-3 col-xs-5 control-label p-0" for="form-field-1">
+                                            Module Name:
+                                        </label>
+                                        <div class="col-sm-7 col-md-9 col-lg-9 col-xs-7 p-0 displayinlineblock">
+                                            <input type="text" class="col-sm-12 col-md-12 col-xs-12" id="Holiday" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-5 col-md-3 col-lg-3 col-xs-5 control-label p-0" for="form-field-1">
+                                            Description:
+                                        </label>
+                                        <div class="col-sm-7 col-md-9 col-lg-9 col-xs-7 p-0 displayinlineblock">
+                                            <textarea type="text" class="col-sm-12 col-md-12 col-xs-12" id="Date" name="Date" ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer mfooter">
+                <!-- <button type="button" class="btn btn-success">Edit</button> -->
+                <button type="button" class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-success">Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
